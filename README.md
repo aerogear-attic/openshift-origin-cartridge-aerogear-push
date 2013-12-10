@@ -1,4 +1,7 @@
 # OpenShift Wildfly Cartridge
+
+This cartridge is running Wildfly 8.0.0.Beta1
+
 This cartridge is based on the JBoss AS cartridge found in OpenShift Origin [here](https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-jbossas).  
 
 Pretty much everything seems to be working fine, but it can still use some testing.  
