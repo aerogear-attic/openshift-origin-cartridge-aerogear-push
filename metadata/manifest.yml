@@ -1,13 +1,13 @@
-Name: jbossas
+Name: wildfly
 Cartridge-Short-Name: WILDFLY
 Display-Name: Wildfly Application Server 8.0.0.Beta1
 Description: "The leading open source Java EE6 application server for enterprise Java applications. Popular development frameworks include Seam, CDI, Weld, and Spring."
 Version: '8'
 License: LGPL
 License-Url: http://www.gnu.org/copyleft/lesser.txt
-Vendor: Red Hat
+Vendor: Wildfly
 Cartridge-Version: '0.0.4'
-Cartridge-Vendor: redhat
+Cartridge-Vendor: wildfly
 Source-Url: https://github.com/developercorey/openshift-wildfly-cartridge.git
 Categories:
   - service
@@ -19,7 +19,7 @@ Website: http://www.wildfly.org
 Help-Topics:
   "Developer Center": https://www.openshift.com/developers
 Cart-Data:
-  - Key: OPENSHIFT_JBOSSAS_LOG_DIR
+  - Key: OPENSHIFT_WILDFLY_LOG_DIR
     Type: environment
     Description: "Directory to store application log files."
   - Key: OPENSHIFT_TMP_DIR
@@ -28,10 +28,10 @@ Cart-Data:
   - Key: OPENSHIFT_REPO_DIR
     Type: environment
     Description: "Application root directory where application files reside. This directory is reset every time you do a git-push"
-  - Key: OPENSHIFT_JBOSSAS_HTTP_PORT
+  - Key: OPENSHIFT_WILDFLY_HTTP_PORT
     Type: environment
     Description: "Internal port to which the web-framework binds to."
-  - Key: OPENSHIFT_JBOSSAS_IP
+  - Key: OPENSHIFT_WILDFLY_IP
     Type: environment
     Description: "Internal IP to which the web-framework binds to."
   - Key: OPENSHIFT_APP_DNS
@@ -56,12 +56,6 @@ Provides:
 Publishes:
   publish-http-url:
     Type: "NET_TCP:httpd-proxy-info"
-  publish-gear-endpoint:
-    Type: "NET_TCP:gear-endpoint-info"
-  publish-jboss-cluster:
-    Type: "NET_TCP:jbossas-cluster-info"
-  publish-jboss-remoting:
-    Type: "NET_TCP:jbossas-remoting-info"
 Subscribes:
   set-env:
     Type: "ENV:*"
@@ -75,10 +69,6 @@ Subscribes:
   set-doc-url:
     Type: "STRING:urlpath"
     Required : false
-  set-jboss-cluster:
-    Type: "NET_TCP:jbossas-cluster-info"
-  set-jboss-remoting:
-    Type: "NET_TCP:jbossas-remoting-info"
   set-generic-java:
     Type: "ENV:NET_TCP:generic-java"
 Scaling:
@@ -89,36 +79,18 @@ Endpoints:
     Private-Port-Name:   HTTP_PORT
     Private-Port:        8080
     Public-Port-Name:    HTTP_PROXY_PORT
-    WebSocket-Port-Name: WEBSOCKET_PORT
-    WebSocket-Port:      8676
     Mappings:
-      - Frontend:      ""
-        Backend:       ""
-        Options:       { "websocket": true}
-      - Frontend:      "/health"
-        Backend:       ""
-        Options:       { health: true }
-  - Private-IP-Name:   IP
-    Private-Port-Name: CLUSTER_PORT
-    Private-Port:      7600
-    Public-Port-Name:  CLUSTER_PROXY_PORT
-  - Private-IP-Name:   IP
-    Private-Port-Name: MESSAGING_PORT
-    Private-Port:      5445
-    Public-Port-Name:  MESSAGING_PROXY_PORT
-  - Private-IP-Name:   IP
-    Private-Port-Name: MESSAGING_THROUGHPUT_PORT
-    Private-Port:      5455
-    Public-Port-Name:  MESSAGING_THROUGHPUT_PROXY_PORT
-  - Private-IP-Name:   IP
-    Private-Port-Name: REMOTING_PORT
-    Private-Port:      4447
-    Public-Port-Name:  REMOTING_PROXY_PORT
-  - Private-IP-Name:   IP
+    - Frontend: ''
+      Backend: ''
+    - Frontend: /health
+      Backend: ''
+      Options:
+        health: true
+  - Private-IP-Name: IP
     Private-Port-Name: MANAGEMENT_NATIVE_PORT
-    Private-Port:      9999
-  - Private-IP-Name:   IP
+    Private-Port: 9999
+  - Private-IP-Name: IP
     Private-Port-Name: MANAGEMENT_HTTP_PORT
-    Private-Port:      9990
+    Private-Port: 9990
 Additional-Control-Actions:
     - threaddump
