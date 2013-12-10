@@ -8,6 +8,7 @@ License-Url: http://www.gnu.org/copyleft/lesser.txt
 Vendor: Red Hat
 Cartridge-Version: '0.0.4'
 Cartridge-Vendor: redhat
+Source-Url: https://github.com/developercorey/openshift-wildfly-cartridge.git
 Categories:
   - service
   - web_framework
