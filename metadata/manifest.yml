@@ -95,6 +95,6 @@ Endpoints:
     Public-Port-Name:  MANAGEMENT_PROXY_PORT
     Mappings:
     - Frontend: '/console'
-      Backend: '//console'
+      Backend: ''
 Additional-Control-Actions:
     - threaddump
