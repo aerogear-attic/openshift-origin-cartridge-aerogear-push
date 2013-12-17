@@ -6,7 +6,7 @@ This cartridge is based on the JBoss AS cartridge found in OpenShift Origin [her
 
 Pretty much everything seems to be working fine, but it can still use some testing.  
 
-If you find any issues, please log them in the [issues](https://github.com/openshift-quickstart/openshift-wildfly-cartridge/issues) section of the [github](https://github.com/openshift-quickstart/openshift-wildfly-cartridge) project.  
+If you find any issues, please log them in the [issues](https://github.com/openshift-cartridges/openshift-wildfly-cartridge/issues) section of the [github](https://github.com/openshift-cartridges/openshift-wildfly-cartridge) project.  
 
 This cartridge will act very similarly to the jbossas-7 cartridge that you can create a gear with.  
 You should be able to modify the code in the /src directory of the git repository, and do a git add, git commit, and git push and have it deployed as ROOT.war.  
@@ -15,7 +15,7 @@ You can also remove the pom.xml and /src directories and place a war file in the
 
 You can build a gear using this cartridge with the following command:
 
-	rhc app create wildfly https://raw.github.com/openshift-quickstart/openshift-wildfly-cartridge/master/metadata/manifest.yml
+	rhc app create wildfly https://raw.github.com/openshift-cartridges/openshift-wildfly-cartridge/master/metadata/manifest.yml
 	
 It will take a few minutes to build, so be patient.
 
