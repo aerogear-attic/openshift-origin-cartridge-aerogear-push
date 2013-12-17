@@ -1,12 +1,12 @@
 Name: wildfly
 Cartridge-Short-Name: WILDFLY
 Display-Name: Wildfly Application Server 8.0.0.Beta1
-Description: "The leading open source Java EE6 application server for enterprise Java applications. Popular development frameworks include Seam, CDI, Weld, and Spring."
+Description: "The leading open source Java EE7 application server for enterprise Java applications. Popular development frameworks include Seam, CDI, Weld, and Spring."
 Version: '8'
 License: LGPL
 License-Url: http://www.gnu.org/copyleft/lesser.txt
 Vendor: Wildfly
-Cartridge-Version: '0.0.4'
+Cartridge-Version: '0.0.5'
 Cartridge-Vendor: wildfly
 Source-Url: https://github.com/developercorey/openshift-wildfly-cartridge.git
 Categories:
@@ -92,5 +92,6 @@ Endpoints:
   - Private-IP-Name: IP
     Private-Port-Name: MANAGEMENT_HTTP_PORT
     Private-Port: 9990
+    Public-Port-Name:  MANAGEMENT_PROXY_PORT
 Additional-Control-Actions:
     - threaddump
