@@ -19,6 +19,9 @@ You can build a gear using this cartridge with the following command:
 	
 It will take a few minutes to build, so be patient.
 
+###Super Secret Hint (Don't tell anyone)
+
+If you run the rhc port-forward command, you can access the WildFly management interface on port 9990
 
 ## Thanks to the following:
 Stian Thorgersen for this blog article that helped me get going!
