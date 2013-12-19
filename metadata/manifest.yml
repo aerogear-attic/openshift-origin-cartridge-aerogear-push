@@ -92,9 +92,5 @@ Endpoints:
   - Private-IP-Name: IP
     Private-Port-Name: MANAGEMENT_HTTP_PORT
     Private-Port: 9990
-    Public-Port-Name:  MANAGEMENT_PROXY_PORT
-    Mappings:
-    - Frontend: '//console/App.html'
-      Backend: '//console/App.html'
 Additional-Control-Actions:
     - threaddump
