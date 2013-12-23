@@ -40,9 +40,6 @@ client_result "   "
 client_result "   run 'rhc port-forward $OPENSHIFT_APP_NAME to access the web admin area on port 9990."
 client_result ""
 
-cart_props "WildFly Web Admin (rhc port-foward $OPENSHIFT_APP_NAME) on port 9990"
-cart_props "username=$username"
-cart_props "password=$password"
 
 #JBOSS_HOME=/etc/alternatives/jbossas-$version
 #pushd $OPENSHIFT_WILDFLY_DIR 1> /dev/null
