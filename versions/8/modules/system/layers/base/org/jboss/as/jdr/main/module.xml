@@ -30,7 +30,7 @@
     <main-class name="org.jboss.as.jdr.CommandLineMain"/>
 
     <resources>
-        <resource-root path="wildfly-jdr-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-jdr-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
         <resource-root path="resources"/>
     </resources>

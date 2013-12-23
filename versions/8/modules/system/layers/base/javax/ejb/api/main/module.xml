@@ -33,7 +33,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-ejb-api_3.2_spec-1.0.0.Alpha2.jar"/>
+        <resource-root path="jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

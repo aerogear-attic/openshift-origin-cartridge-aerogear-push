@@ -31,7 +31,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-jaxws-api_2.2_spec-2.0.2.Beta2.jar"/>
+        <resource-root path="jboss-jaxws-api_2.2_spec-2.0.2.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

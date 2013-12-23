@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jipijapa-spi-1.0.0.Beta1.jar"/>
+        <resource-root path="jipijapa-spi-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

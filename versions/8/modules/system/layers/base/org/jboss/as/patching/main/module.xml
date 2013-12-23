@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-patching-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-patching-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -42,5 +42,6 @@
         <module name="org.jboss.modules"/>
         <module name="org.jboss.msc"/>
         <module name="org.jboss.staxmapper"/>
+        <module name="org.wildfly.security.manager"/>
     </dependencies>
 </module>

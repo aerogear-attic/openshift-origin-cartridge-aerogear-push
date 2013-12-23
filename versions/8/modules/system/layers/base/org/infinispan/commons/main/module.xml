@@ -21,8 +21,12 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <module xmlns="urn:jboss:module:1.1" name="org.infinispan.commons">
+    <properties>
+        <property name="jboss.api" value="private"/>
+    </properties>
+
     <resources>
-        <resource-root path="infinispan-commons-6.0.0.Beta2.jar"/>
+        <resource-root path="infinispan-commons-6.0.1.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

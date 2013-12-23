@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="scannotation-1.0.2.jar"/>
+        <resource-root path="scannotation-1.0.3.jar"/>
         <!-- Insert resources here -->
     </resources>
 

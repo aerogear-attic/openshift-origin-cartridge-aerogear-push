@@ -30,7 +30,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-saaj-api_1.3_spec-1.0.3.Beta1.jar"/>
+        <resource-root path="jboss-saaj-api_1.3_spec-1.0.3.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

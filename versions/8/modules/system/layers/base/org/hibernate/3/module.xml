@@ -25,7 +25,7 @@
 <!-- Represents the Hibernate 3.x module  -->
 <module xmlns="urn:jboss:module:1.1" name="org.hibernate" slot="3">
     <resources>
-        <resource-root path="jipijapa-hibernate3-1.0.0.Beta1.jar"/>
+        <resource-root path="jipijapa-hibernate3-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

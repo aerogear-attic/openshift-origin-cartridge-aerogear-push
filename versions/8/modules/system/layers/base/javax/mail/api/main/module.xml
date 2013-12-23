@@ -29,7 +29,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="mail-1.5.0-b01.jar"/>
+        <resource-root path="javax.mail-1.5.0.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

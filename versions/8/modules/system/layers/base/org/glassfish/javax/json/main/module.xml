@@ -29,7 +29,6 @@
     </properties>
 
     <dependencies>
-        <module name="javax.json.api"/>
     </dependencies>
     <resources>
         <resource-root path="javax.json-1.0.3.jar"/>

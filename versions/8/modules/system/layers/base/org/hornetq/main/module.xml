@@ -25,12 +25,14 @@
 <module xmlns="urn:jboss:module:1.1" name="org.hornetq">
     <resources>
         <resource-root path="lib"/>
-        <resource-root path="hornetq-core-client-2.4.0.Beta2.jar"/>
-        <resource-root path="hornetq-server-2.4.0.Beta2.jar"/>
-        <resource-root path="hornetq-commons-2.4.0.Beta2.jar"/>
-        <resource-root path="hornetq-journal-2.4.0.Beta2.jar"/>
-        <resource-root path="hornetq-jms-client-2.4.0.Beta2.jar"/>
-        <resource-root path="hornetq-jms-server-2.4.0.Beta2.jar"/>
+        <resource-root path="hornetq-core-client-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-server-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-commons-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-tools-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-journal-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-jms-client-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-jms-server-2.4.0.Final.jar"/>
+        <resource-root path="hornetq-native-2.4.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -39,12 +41,14 @@
         <module name="javax.jms.api" />
         <module name="org.jboss.jts"/>
         <module name="org.jboss.logging"/>
-        <module name="org.jboss.netty"/>
+        <module name="io.netty"/>
         <module name="org.jgroups"/>
         <module name="javax.resource.api"/>
         <module name="org.jboss.jboss-transaction-spi"/>
         <!--this reverse dependency is here so integration classes in the AS code base can be instantiated by HornetQ-->
         <module name="org.jboss.as.messaging"/>
+        <module name="org.jboss.as.security"/>
+        <module name="org.picketbox"/>
         <!-- this optional dependency is required to be able to use this module from a jms-bridge to connect to a remote
              AS7 server [AS7-6549] -->
         <module name="org.jboss.remote-naming" optional="true"/>

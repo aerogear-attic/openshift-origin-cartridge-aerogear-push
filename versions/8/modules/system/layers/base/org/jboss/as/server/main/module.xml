@@ -30,14 +30,14 @@
     <main-class name="org.jboss.as.server.DomainServerMain"/>
 
     <resources>
-        <resource-root path="wildfly-server-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-server-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 
     <dependencies>
         <module name="javax.api"/>
         <module name="org.jboss.staxmapper"/>
-        <module name="org.jboss.common-beans" services="export"/>
+        <module name="org.jboss.common-beans" services="export" optional="true"/>
         <module name="org.jboss.dmr"/>
         <module name="org.jboss.invocation"/>
         <module name="org.jboss.jandex"/>

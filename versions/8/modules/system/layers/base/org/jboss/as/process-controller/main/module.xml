@@ -30,7 +30,7 @@
     <main-class name="org.jboss.as.process.Main"/>
 
     <resources>
-        <resource-root path="wildfly-process-controller-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-process-controller-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 

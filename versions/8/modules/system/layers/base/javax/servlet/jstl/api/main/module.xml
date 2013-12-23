@@ -32,7 +32,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-jstl-api_1.2_spec-1.0.3.Final.jar"/>
+        <resource-root path="jboss-jstl-api_1.2_spec-1.0.4.Beta1.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

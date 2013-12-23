@@ -42,7 +42,6 @@ else
    echo ""
  fi
 fi
-
 export JBOSS_HOME
 
 if [ "x$JBOSS_MODULEPATH" = "x" ]; then

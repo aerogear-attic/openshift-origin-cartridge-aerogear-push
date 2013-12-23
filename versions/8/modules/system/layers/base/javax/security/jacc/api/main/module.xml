@@ -29,7 +29,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-jacc-api_1.4_spec-1.0.2.Final.jar"/>
+        <resource-root path="jboss-jacc-api_1.5_spec-1.0.0.Beta1.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

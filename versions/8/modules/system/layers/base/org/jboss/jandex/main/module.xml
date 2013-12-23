@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jandex-1.1.0.Alpha1.jar"/>
+        <resource-root path="jandex-1.1.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
