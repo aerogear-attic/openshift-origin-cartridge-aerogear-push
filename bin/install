@@ -23,7 +23,26 @@ pushd $OPENSHIFT_WILDFLY_DIR/versions/${version}/template/src/main/webapp 1> /de
   jar cvf $OPENSHIFT_WILDFLY_DIR/standalone/deployments/ROOT.war ./*
 popd 1> /dev/null
 
+username=$(generate_username)
+password=$(generate_password)
 
+echo "$username" > $OPENSHIFT_WILDFLY_DIR/env/OPENSHIFT_WILDFLY_USERNAME
+echo "$password" > $OPENSHIFT_WILDFLY_DIR/env/OPENSHIFT_WILDFLY_PASSWORD
+
+$OPENSHIFT_WILDFLY_DIR/bin/add-user.sh --user ${username} --password ${password} --silent --enable
+
+client_result ""
+client_result "WildFLy 8 administrator added.  Please make note of these credentials:"
+client_result ""
+client_result "   Username: $username"
+client_result "   Password: $password"
+client_result "   "
+client_result "   run 'rhc port-forward $OPENSHIFT_APP_NAME to access the web admin area on port 9990."
+client_result ""
+
+cart_props "WildFly Web Admin (rhc port-foward $OPENSHIFT_APP_NAME) on port 9990"
+cart_props "username=$username"
+cart_props "password=$password"
 
 #JBOSS_HOME=/etc/alternatives/jbossas-$version
 #pushd $OPENSHIFT_WILDFLY_DIR 1> /dev/null
