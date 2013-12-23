@@ -28,10 +28,10 @@
     </properties>
 
     <resources>
-        <resource-root path="ironjacamar-common-impl-1.1.0.Final.jar"/>
-        <resource-root path="ironjacamar-core-impl-1.1.0.Final.jar"/>
-        <resource-root path="ironjacamar-deployers-common-1.1.0.Final.jar"/>
-        <resource-root path="ironjacamar-validator-1.1.0.Final.jar"/>
+        <resource-root path="ironjacamar-common-impl-1.1.2.Final.jar"/>
+        <resource-root path="ironjacamar-core-impl-1.1.2.Final.jar"/>
+        <resource-root path="ironjacamar-deployers-common-1.1.2.Final.jar"/>
+        <resource-root path="ironjacamar-validator-1.1.2.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

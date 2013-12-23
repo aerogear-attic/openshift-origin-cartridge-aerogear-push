@@ -24,8 +24,8 @@
 
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.resteasy.resteasy-jackson2-provider">
     <resources>
-        <resource-root path="resteasy-jackson2-provider-3.0.4.Final.jar"/>
-	<resource-root path="resteasy-jackson2-provider-3.0.4.Final-jandex.jar"/>
+        <resource-root path="resteasy-jackson2-provider-3.0.6.Final.jar"/>
+	<resource-root path="resteasy-jackson2-provider-3.0.6.Final-jandex.jar"/>
         <!-- Insert resources here -->
     </resources>
 

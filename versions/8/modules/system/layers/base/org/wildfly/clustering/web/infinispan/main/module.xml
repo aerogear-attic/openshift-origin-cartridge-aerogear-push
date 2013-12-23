@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-clustering-web-infinispan-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-clustering-web-infinispan-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -48,6 +48,7 @@
         <module name="org.jgroups"/>
         <module name="org.wildfly.clustering.api"/>
         <module name="org.wildfly.clustering.server" services="import"/>
+        <module name="org.wildfly.clustering.web.api"/>
         <module name="org.wildfly.clustering.web.spi"/>
         <module name="org.wildfly.security.manager"/>
     </dependencies>

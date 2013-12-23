@@ -25,7 +25,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.resteasy.resteasy-jsapi">
 
     <resources>
-        <resource-root path="resteasy-jsapi-3.0.4.Final.jar"/>
+        <resource-root path="resteasy-jsapi-3.0.6.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="io.undertow.websocket">
     <resources>
-        <resource-root path="undertow-websockets-jsr-1.0.0.Beta17.jar"/>
+        <resource-root path="undertow-websockets-jsr-1.0.0.Beta30.jar"/>
         <!-- Insert resources here -->
     </resources>
 

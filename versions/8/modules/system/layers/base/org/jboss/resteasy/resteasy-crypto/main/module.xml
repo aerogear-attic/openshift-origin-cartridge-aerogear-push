@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="resteasy-crypto-3.0.4.Final.jar"/>
+        <resource-root path="resteasy-crypto-3.0.6.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

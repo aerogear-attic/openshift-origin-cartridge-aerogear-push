@@ -24,8 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="io.undertow.jsp">
     <resources>
-        <resource-root path="undertow-jsp-1.0.0.Beta17.jar"/>
-        <resource-root path="jastow-1.0.0.Beta1.jar"/>
+        <resource-root path="jastow-1.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="cal10n-api-0.7.3.jar"/>
+        <resource-root path="cal10n-api-0.8.1.jar"/>
         <!-- Insert resources here -->
     </resources>
 

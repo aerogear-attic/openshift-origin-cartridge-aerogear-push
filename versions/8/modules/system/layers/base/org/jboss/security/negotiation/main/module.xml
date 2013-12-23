@@ -28,11 +28,11 @@
     </properties>
 
     <resources>
-        <resource-root path="jboss-negotiation-common-2.2.3.Final.jar"/>
-        <resource-root path="jboss-negotiation-extras-2.2.3.Final.jar"/>
-        <resource-root path="jboss-negotiation-net-2.2.3.Final.jar"/>
-        <resource-root path="jboss-negotiation-ntlm-2.2.3.Final.jar"/>
-        <resource-root path="jboss-negotiation-spnego-2.2.3.Final.jar"/>
+        <resource-root path="jboss-negotiation-common-2.2.6.Final.jar"/>
+        <resource-root path="jboss-negotiation-extras-2.2.6.Final.jar"/>
+        <resource-root path="jboss-negotiation-net-2.2.6.Final.jar"/>
+        <resource-root path="jboss-negotiation-ntlm-2.2.6.Final.jar"/>
+        <resource-root path="jboss-negotiation-spnego-2.2.6.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

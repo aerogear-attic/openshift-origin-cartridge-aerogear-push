@@ -30,13 +30,17 @@
     <main-class name="org.jboss.as.host.controller.Main"/>
 
     <resources>
-        <resource-root path="wildfly-host-controller-8.0.0.Beta1.jar"/>
+        <resource-root path="wildfly-host-controller-8.0.0.CR1.jar"/>
         <!-- Insert resources here -->
     </resources>
 
     <dependencies>
         <module name="javax.api"/>
-        <module name="org.apache.xalan" services="import"/>
+        <!--
+        Xalan is optional dependancy and would need to be present in cases where runtime code needs xslt transformation otherwise
+        xslt parser will fallback to JDK provided xalan, which can cause issues.
+         -->
+        <module name="org.apache.xalan" services="import" optional="true"/>
         <module name="org.apache.xerces" services="import"/>
         <module name="org.codehaus.woodstox" services="import"/>
         <module name="org.jboss.staxmapper"/>
@@ -57,7 +61,6 @@
         <module name="org.wildfly.security.manager"/>
         <module name="org.jboss.as.security" optional="true" services="import"/>
         <module name="org.jboss.as.server"/>
-        <module name="org.jboss.as.threads"/>
         <module name="org.jboss.as.version"/>
         <module name="org.jboss.logging"/>
         <module name="org.jboss.logmanager" services="import"/>

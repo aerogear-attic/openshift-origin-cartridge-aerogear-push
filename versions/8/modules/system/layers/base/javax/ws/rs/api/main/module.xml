@@ -24,13 +24,12 @@
 
 <module xmlns="urn:jboss:module:1.1" name="javax.ws.rs.api">
     <resources>
-        <resource-root path="jaxrs-api-3.0.4.Final.jar"/>
+        <resource-root path="jaxrs-api-3.0.6.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
     <dependencies>
         <module name="org.jboss.resteasy.resteasy-jaxrs" services="export"/>
-        <module name="org.jboss.resteasy.resteasy-client" services="export"/>
         <module name="javax.xml.bind.api" />
         <module name="javax.api" />
     </dependencies>
