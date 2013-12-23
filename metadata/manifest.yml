@@ -14,7 +14,7 @@ Categories:
   - web_framework
   - java
   - wildfly
-  - jee_full_profile
+  - java_ee_7
 Website: http://www.wildfly.org
 Help-Topics:
   "Developer Center": https://www.openshift.com/developers
