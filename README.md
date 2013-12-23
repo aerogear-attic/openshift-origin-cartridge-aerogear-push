@@ -21,7 +21,11 @@ It will take a few minutes to build, so be patient.
 
 ###Super Secret Hint (Don't tell anyone)
 
-If you run the rhc port-forward command, you can access the WildFly management interface on port 9990
+If you run the rhc port-forward command, you can access the WildFly management interface on port 9990  
+A username and password is created when you install this cartridge.  
+If you don't write it down, fear not, the following environment variables will contain them.  
+$OPENSHIFT_WILDFLY_USERNAME  
+$OPENSHIFT_WILDFLY_PASSWORD
 
 	corey$ rhc port-forward wildfly
 	Checking available ports ... done
