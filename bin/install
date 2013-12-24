@@ -32,7 +32,7 @@ echo "$password" > $OPENSHIFT_WILDFLY_DIR/env/OPENSHIFT_WILDFLY_PASSWORD
 $OPENSHIFT_WILDFLY_DIR/bin/add-user.sh --user ${username} --password ${password} --silent --enable
 
 client_result ""
-client_result "WildFLy 8 administrator added.  Please make note of these credentials:"
+client_result "WildFly 8 administrator added.  Please make note of these credentials:"
 client_result ""
 client_result "   Username: $username"
 client_result "   Password: $password"
