@@ -93,7 +93,7 @@ export JBOSS_HOME
 
 # Read an optional running configuration file
 if [ "x$RUN_CONF" = "x" ]; then
-    RUN_CONF="$DIRNAME/standalone.conf"
+    RUN_CONF="$DIRNAME/standalone-config.conf"
 fi
 if [ -r "$RUN_CONF" ]; then
     . "$RUN_CONF"
