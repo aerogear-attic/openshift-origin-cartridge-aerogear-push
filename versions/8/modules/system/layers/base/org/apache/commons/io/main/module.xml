@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="commons-io-2.1.jar"/>
+        <resource-root path="commons-io-2.4.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="netty-xnio-transport-0.1.1.CR1.jar"/>
+        <resource-root path="netty-xnio-transport-0.1.1.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

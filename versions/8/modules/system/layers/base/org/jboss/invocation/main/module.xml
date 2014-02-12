@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jboss-invocation-1.2.0.Beta4.jar"/>
+        <resource-root path="jboss-invocation-1.2.1.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

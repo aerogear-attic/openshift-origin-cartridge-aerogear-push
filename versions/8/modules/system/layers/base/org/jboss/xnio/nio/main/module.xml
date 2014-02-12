@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="xnio-nio-3.2.0.Beta4.jar"/>
+        <resource-root path="xnio-nio-3.2.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

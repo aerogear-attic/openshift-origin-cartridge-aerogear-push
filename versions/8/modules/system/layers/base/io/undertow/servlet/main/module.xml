@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="io.undertow.servlet">
     <resources>
-        <resource-root path="undertow-servlet-1.0.0.Beta30.jar"/>
+        <resource-root path="undertow-servlet-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -41,6 +41,5 @@
         <module name="org.jboss.logging"/>
         <module name="io.undertow.core" />
         <module name="org.jboss.xnio"/>
-        <module name="org.wildfly.mod_cluster.undertow" services="export" export="true" optional="true"/>
     </dependencies>
 </module>

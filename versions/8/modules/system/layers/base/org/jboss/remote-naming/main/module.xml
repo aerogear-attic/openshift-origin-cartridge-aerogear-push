@@ -23,7 +23,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.remote-naming">
 
     <resources>
-        <resource-root path="jboss-remote-naming-2.0.0.Beta2.jar"/>
+        <resource-root path="jboss-remote-naming-2.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -25,7 +25,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.sasl">
 
     <resources>
-        <resource-root path="jboss-sasl-1.0.4.CR1.jar"/>
+        <resource-root path="jboss-sasl-1.0.4.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -64,9 +64,6 @@
             </logger>
         </audit-log>
         <management-interfaces>
-            <native-interface security-realm="ManagementRealm">
-                <socket-binding native="management-native"/>
-            </native-interface>
             <http-interface security-realm="ManagementRealm" http-upgrade-enabled="true">
                 <socket-binding http="management-http"/>
             </http-interface>
@@ -161,7 +158,7 @@
         <subsystem xmlns="urn:jboss:domain:ee:2.0">
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
             <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
-            <ejb-annotation-property-replacement>false</ejb-annotation-property-replacement>
+            <annotation-property-replacement>false</annotation-property-replacement>
             <concurrent>
                 <context-services>
                     <context-service name="default" jndi-name="java:jboss/ee/concurrency/context/default" use-transaction-setup-provider="true"/>
@@ -180,14 +177,12 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ejb3:2.0">
             <session-bean>
-                <stateless>
-                    <bean-instance-pool-ref pool-name="slsb-strict-max-pool"/>
-                </stateless>
                 <stateful default-access-timeout="5000" cache-ref="distributable" passivation-disabled-cache-ref="simple"/>
                 <singleton default-access-timeout="5000"/>
             </session-bean>
             <pools>
                 <bean-instance-pools>
+                    <!-- A sample strict max pool configuration -->
                     <strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
                     <strict-max-pool name="mdb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
                 </bean-instance-pools>
@@ -327,7 +322,7 @@
         <subsystem xmlns="urn:jboss:domain:modcluster:1.2">
             <mod-cluster-config advertise-socket="modcluster" connector="ajp">
                 <dynamic-load-provider>
-                    <load-metric type="busyness"/>
+                    <load-metric type="cpu"/>
                 </dynamic-load-provider>
             </mod-cluster-config>
         </subsystem>
@@ -336,6 +331,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:pojo:1.0"/>
         <subsystem xmlns="urn:jboss:domain:remoting:2.0">
+            <endpoint worker="default"/>
             <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:resource-adapters:2.0"/>
@@ -383,15 +379,20 @@
                 <ajp-listener name="ajp" socket-binding="ajp"/>
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
+                    <filter-ref name="server-header"/>
+                    <filter-ref name="x-powered-by-header"/>
                 </host>
             </server>
             <servlet-container name="default" default-buffer-cache="default" stack-trace-on-error="local-only">
                 <jsp-config/>
-                <persistent-sessions/>
             </servlet-container>
             <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content" directory-listing="true"/>
             </handlers>
+            <filters>
+                <response-header name="server-header" header-name="Server" header-value="Wildfly 8"/>
+                <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow 1"/>
+            </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:1.2">
             <modify-wsdl-address>true</modify-wsdl-address>
@@ -423,7 +424,6 @@
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
-        <socket-binding name="management-native" interface="management" port="${jboss.management.native.port:9999}"/>
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
         <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>

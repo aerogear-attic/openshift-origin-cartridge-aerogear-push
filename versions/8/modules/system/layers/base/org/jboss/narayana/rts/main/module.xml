@@ -24,10 +24,10 @@
 
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.narayana.rts">
     <resources>
-        <resource-root path="restat-api-5.0.0.CR2.jar"/>
-        <resource-root path="restat-util-5.0.0.CR2.jar"/>
-        <resource-root path="restat-integration-5.0.0.CR2.jar"/>
-        <resource-root path="restat-bridge-5.0.0.CR2.jar"/>
+        <resource-root path="restat-api-5.0.0.Final.jar"/>
+        <resource-root path="restat-util-5.0.0.Final.jar"/>
+        <resource-root path="restat-integration-5.0.0.Final.jar"/>
+        <resource-root path="restat-bridge-5.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

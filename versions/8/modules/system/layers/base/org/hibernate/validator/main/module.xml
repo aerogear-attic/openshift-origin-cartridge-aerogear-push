@@ -25,7 +25,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.hibernate.validator">
 
   <resources>
-    <resource-root path="hibernate-validator-5.0.2.Final.jar"/>
+    <resource-root path="hibernate-validator-5.0.3.Final.jar"/>
         <!-- Insert resources here -->
   </resources>
 

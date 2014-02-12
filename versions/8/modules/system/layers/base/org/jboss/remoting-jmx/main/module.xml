@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.remoting-jmx">
     <resources>
-        <resource-root path="remoting-jmx-2.0.0.CR4.jar"/>
+        <resource-root path="remoting-jmx-2.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

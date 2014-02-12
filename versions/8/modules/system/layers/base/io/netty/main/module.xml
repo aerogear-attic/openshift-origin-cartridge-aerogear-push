@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.1" name="io.netty">
     <resources>
-        <resource-root path="netty-all-4.0.13.Final.jar"/>
+        <resource-root path="netty-all-4.0.15.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

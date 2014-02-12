@@ -25,7 +25,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.as.system-jmx">
     
     <resources>
-        <resource-root path="wildfly-system-jmx-8.0.0.CR1.jar"/>
+        <resource-root path="wildfly-system-jmx-8.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

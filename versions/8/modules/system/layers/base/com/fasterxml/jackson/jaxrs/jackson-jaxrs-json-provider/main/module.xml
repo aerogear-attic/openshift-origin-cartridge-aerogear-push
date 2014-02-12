@@ -23,15 +23,16 @@
   -->
 <module xmlns="urn:jboss:module:1.1" name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider">
      <resources>
-        <resource-root path="jackson-jaxrs-json-provider-2.2.3.jar"/>
-        <resource-root path="jackson-jaxrs-base-2.2.3.jar"/>
-        <resource-root path="jackson-module-jaxb-annotations-2.2.3.jar"/>
+        <resource-root path="jackson-jaxrs-json-provider-2.3.0.jar"/>
+        <resource-root path="jackson-jaxrs-base-2.3.0.jar"/>
+        <resource-root path="jackson-module-jaxb-annotations-2.3.0.jar"/>
         <!-- Insert resources here -->
     </resources>
 
     <dependencies>
         <module name="javax.api"/>
         <module name="javax.ws.rs.api"/>
+        <module name="javax.xml.bind.api"/>
         <module name="com.fasterxml.jackson.core.jackson-annotations"/>
         <module name="com.fasterxml.jackson.core.jackson-core"/>
         <module name="com.fasterxml.jackson.core.jackson-databind"/>

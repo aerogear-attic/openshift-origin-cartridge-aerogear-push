@@ -27,7 +27,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jackson-core-asl-1.9.12.jar"/>
+        <resource-root path="jackson-core-asl-1.9.13.jar"/>
         <!-- Insert resources here -->
     </resources>
 

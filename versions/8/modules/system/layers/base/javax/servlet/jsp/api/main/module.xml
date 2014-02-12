@@ -29,7 +29,7 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-jsp-api_2.3_spec-1.0.0.Beta1.jar"/>
+        <resource-root path="jboss-jsp-api_2.3_spec-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 </module>

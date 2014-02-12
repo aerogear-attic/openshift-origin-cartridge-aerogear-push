@@ -28,11 +28,11 @@
     </properties>
 
     <resources>
-        <resource-root path="jboss-metadata-common-8.0.0.Beta5.jar"/>
-        <resource-root path="jboss-metadata-appclient-8.0.0.Beta5.jar"/>
-        <resource-root path="jboss-metadata-ejb-8.0.0.Beta5.jar"/>
-        <resource-root path="jboss-metadata-web-8.0.0.Beta5.jar"/>
-        <resource-root path="jboss-metadata-ear-8.0.0.Beta5.jar"/>
+        <resource-root path="jboss-metadata-common-8.0.0.Final.jar"/>
+        <resource-root path="jboss-metadata-appclient-8.0.0.Final.jar"/>
+        <resource-root path="jboss-metadata-ejb-8.0.0.Final.jar"/>
+        <resource-root path="jboss-metadata-web-8.0.0.Final.jar"/>
+        <resource-root path="jboss-metadata-ear-8.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-security-manager-1.0.0.Beta3.jar"/>
+        <resource-root path="wildfly-security-manager-1.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

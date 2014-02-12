@@ -29,7 +29,7 @@
     </exports>
 
     <resources>
-        <resource-root path="wildfly-controller-client-8.0.0.CR1.jar"/>
+        <resource-root path="wildfly-controller-client-8.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -37,8 +37,6 @@
         <module name="org.jboss.as.protocol"/>
         <module name="org.jboss.dmr"/>
         <module name="org.jboss.logging"/>
-        <module name="org.jboss.marshalling"/>
-        <module name="org.jboss.marshalling.river" services="import"/>
         <module name="org.jboss.remoting"/>
         <module name="org.jboss.threads"/>
     </dependencies>

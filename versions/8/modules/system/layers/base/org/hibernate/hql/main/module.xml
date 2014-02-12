@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="hibernate-hql-lucene-1.0.0.Alpha5.jar"/>
-        <resource-root path="hibernate-hql-parser-1.0.0.Alpha5.jar"/>
+        <resource-root path="hibernate-hql-lucene-1.0.0.Alpha6.jar"/>
+        <resource-root path="hibernate-hql-parser-1.0.0.Alpha6.jar"/>
         <!-- Insert resources here -->
     </resources>
 

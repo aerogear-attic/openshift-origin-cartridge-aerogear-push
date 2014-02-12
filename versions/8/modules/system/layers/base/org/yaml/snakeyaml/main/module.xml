@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="snakeyaml-1.8.jar"/>
+        <resource-root path="snakeyaml-1.13.jar"/>
         <!-- Insert resources here -->
     </resources>
 

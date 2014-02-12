@@ -30,7 +30,7 @@
     <main-class name="org.jboss.as.cli.CommandLineMain"/>
 
     <resources>
-        <resource-root path="wildfly-cli-8.0.0.CR1.jar"/>
+        <resource-root path="wildfly-cli-8.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
@@ -48,6 +48,7 @@
         <module name="org.jboss.staxmapper"/>
         <module name="org.jboss.threads"/>
         <module name="org.jboss.vfs"/>
+        <module name="org.picketbox"/>
         <module name="javax.api"/>
     </dependencies>
 

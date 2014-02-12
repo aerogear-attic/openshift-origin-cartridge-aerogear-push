@@ -26,7 +26,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-cmp-8.0.0.CR1.jar"/>
+        <resource-root path="wildfly-cmp-8.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 

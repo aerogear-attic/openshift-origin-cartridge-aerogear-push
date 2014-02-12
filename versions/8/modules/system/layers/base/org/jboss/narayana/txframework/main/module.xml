@@ -25,8 +25,8 @@
 <module xmlns="urn:jboss:module:1.1" name="org.jboss.narayana.txframework">
 
     <resources>
-        <resource-root path="txframework-5.0.0.CR2.jar"/>
-        <resource-root path="restat-util-5.0.0.CR2.jar"/>
+        <resource-root path="txframework-5.0.0.Final.jar"/>
+        <resource-root path="restat-util-5.0.0.Final.jar"/>
         <!-- Insert resources here -->
     </resources>
 
