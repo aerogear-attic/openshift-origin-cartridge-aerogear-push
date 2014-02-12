@@ -15,8 +15,8 @@ cartridge_type="wildfly"
 function getscanconfig() {
     count=0
     while [ ${count} -lt 4 ]; do
-      controller="${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_NATIVE_PORT}"
-      scanconfig=`$OPENSHIFT_WILDFLY_DIR/bin/tools/jboss-cli.sh -c --controller=${controller} "/subsystem=deployment-scanner/:read-resource(recursive=true)" 2>&1 || :`
+      controller="http-remoting://${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT}"
+      scanconfig=`$OPENSHIFT_WILDFLY_DIR/bin/tools/jboss-cli.sh -c --controller=${controller} --user=${OPENSHIFT_WILDFLY_USERNAME} --password=${OPENSHIFT_WILDFLY_PASSWORD} "/subsystem=deployment-scanner/:read-resource(recursive=true)" 2>&1 || :`
       if [[ $scanconfig =~ '"outcome" => "success"' ]] ; then
         SCANCONFIG=$scanconfig
         return
@@ -173,8 +173,8 @@ function ismgmtup() {
     let count=0
     while [ ${count} -lt 64 ]
     do
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_NATIVE_PORT}" | grep "(LISTEN)" > /dev/null; then
-            echo "Found ${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_NATIVE_PORT} listening port"
+        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+            echo "Found ${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT} listening port"
             return 0
         fi
         let count=${count}+1
