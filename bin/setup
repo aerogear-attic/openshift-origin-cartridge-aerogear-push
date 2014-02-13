@@ -13,5 +13,6 @@ mkdir -p ${OPENSHIFT_WILDFLY_DIR}/{template,standalone/tmp,standalone/deployment
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_WILDFLY_DIR}standalone/configuration
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/bin/* ${OPENSHIFT_WILDFLY_DIR}/bin
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/* ${OPENSHIFT_WILDFLY_DIR}/
+
 # Initialize the JBoss CLI history file
-#[ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
+[ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
