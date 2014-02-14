@@ -19,6 +19,12 @@ You can build a gear using this cartridge with the following command:
 	
 It will take a few minutes to build, so be patient.
 
+### JBoss CLI
+
+This cartridge provides an OpenShift compatible wrapper of the JBoss CLI tool on the gear PATH, located at $OPENSHIFT_WILDFLY_DIR/bin/tools/jboss-cli.sh. Use the following command to connect to the WildFly instance with the CLI tool:
+
+        jboss-cli.sh -c --controller=$OPENSHIFT_WILDFLY_IP:$OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT
+
 ###Super Secret Hint (Don't tell anyone)
 
 If you run the rhc port-forward command, you can access the WildFly management interface on port 9990  
