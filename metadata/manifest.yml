@@ -92,9 +92,6 @@ Endpoints:
       Options:
         health: true
   - Private-IP-Name: IP
-    Private-Port-Name: MANAGEMENT_NATIVE_PORT
-    Private-Port: 9999
-  - Private-IP-Name: IP
     Private-Port-Name: MANAGEMENT_HTTP_PORT
     Private-Port: 9990
 Additional-Control-Actions:
