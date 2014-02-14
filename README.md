@@ -15,7 +15,7 @@ You can also remove the pom.xml and /src directories and place a war file in the
 
 You can build a gear using this cartridge with the following command:
 
-	rhc app create wildfly https://raw.github.com/openshift-cartridges/openshift-wildfly-cartridge/master/metadata/manifest.yml
+	rhc app create wildfly https://cartreflect-claytondev.rhcloud.com/reflect?github=openshift-cartridges/openshift-wildfly-cartridge
 	
 It will take a few minutes to build, so be patient.
 
