@@ -63,6 +63,14 @@ case "`uname`" in
         ;;
 esac
 
+# Read an optional running configuration file
+if [ "x$RUN_CONF" = "x" ]; then
+    RUN_CONF="$DIRNAME/standalone.conf"
+fi
+if [ -r "$RUN_CONF" ]; then
+    . "$RUN_CONF"
+fi
+
 # For Cygwin, ensure paths are in UNIX format before anything is touched
 if $cygwin ; then
     [ -n "$JBOSS_HOME" ] &&
@@ -90,14 +98,6 @@ else
  fi
 fi
 export JBOSS_HOME
-
-# Read an optional running configuration file
-if [ "x$RUN_CONF" = "x" ]; then
-    RUN_CONF="$DIRNAME/standalone-config.conf"
-fi
-if [ -r "$RUN_CONF" ]; then
-    . "$RUN_CONF"
-fi
 
 # Set debug settings if not already set
 if [ "$DEBUG_MODE" = "true" ]; then
@@ -184,30 +184,6 @@ if $linux || $solaris; then
        esac
     done
 fi
-
-# No readlink -m on BSD
-if $darwin || $freebsd; then
-    # consolidate the server and command line opts
-    CONSOLIDATED_OPTS="$JAVA_OPTS $SERVER_OPTS"
-    # process the standalone options
-    for var in $CONSOLIDATED_OPTS
-    do
-       # Remove quotes
-       p=`echo $var | tr -d '"'`
-       case $p in
-         -Djboss.server.base.dir=*)
-              JBOSS_BASE_DIR=`cd ${p#*=} ; pwd -P`
-              ;;
-         -Djboss.server.log.dir=*)
-              JBOSS_LOG_DIR=`cd ${p#*=} ; pwd -P`
-              ;;
-         -Djboss.server.config.dir=*)
-              JBOSS_CONFIG_DIR=`cd ${p#*=} ; pwd -P`
-              ;;
-       esac
-    done
-fi
-
 # determine the default base dir, if not set
 if [ "x$JBOSS_BASE_DIR" = "x" ]; then
    JBOSS_BASE_DIR="$JBOSS_HOME/standalone"
@@ -244,6 +220,29 @@ echo "  JAVA_OPTS: $JAVA_OPTS"
 echo ""
 echo "========================================================================="
 echo ""
+
+# No readlink -m on BSD
+if $darwin || $freebsd; then
+    # consolidate the server and command line opts
+    CONSOLIDATED_OPTS="$JAVA_OPTS $SERVER_OPTS"
+    # process the standalone options
+    for var in $CONSOLIDATED_OPTS
+    do
+       # Remove quotes
+       p=`echo $var | tr -d '"'`
+       case $p in
+         -Djboss.server.base.dir=*)
+              JBOSS_BASE_DIR=`cd ${p#*=} ; pwd -P`
+              ;;
+         -Djboss.server.log.dir=*)
+              JBOSS_LOG_DIR=`cd ${p#*=} ; pwd -P`
+              ;;
+         -Djboss.server.config.dir=*)
+              JBOSS_CONFIG_DIR=`cd ${p#*=} ; pwd -P`
+              ;;
+       esac
+    done
+fi
 
 while true; do
    if [ "x$LAUNCH_JBOSS_IN_BACKGROUND" = "x" ]; then
