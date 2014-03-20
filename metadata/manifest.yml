@@ -1,11 +1,11 @@
 Name: wildfly
 Cartridge-Short-Name: WILDFLY
-Display-Name: Wildfly Application Server 8.0.0.Final
+Display-Name: WildFly Application Server 8.0.0.Final
 Description: "The leading open source Java EE7 application server for enterprise Java applications. Popular development frameworks include Seam, CDI, Weld, and Spring."
 Version: '8'
 License: LGPL
 License-Url: http://www.gnu.org/copyleft/lesser.txt
-Vendor: Wildfly
+Vendor: WildFly
 Cartridge-Version: '0.0.5'
 Cartridge-Vendor: wildfly
 Categories:
