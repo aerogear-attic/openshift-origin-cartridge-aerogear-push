@@ -22,10 +22,10 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="io.undertow.jsp">
+<module xmlns="urn:jboss:module:1.3" name="io.undertow.jsp">
     <resources>
         <resource-root path="jastow-1.0.0.Final.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="ecj-4.3.1.jar"/>
     </resources>
 
     <dependencies>
@@ -40,7 +40,6 @@
         <module name="org.jboss.logging"/>
         <module name="io.undertow.core" />
         <module name="io.undertow.servlet" />
-        <module name="io.undertow.jasper-jdt" />
         <module name="org.jboss.xnio"/>
     </dependencies>
 </module>

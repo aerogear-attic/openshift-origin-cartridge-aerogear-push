@@ -22,7 +22,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.jboss.as.standalone">
+<module xmlns="urn:jboss:module:1.3" name="org.jboss.as.standalone">
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
@@ -30,13 +30,12 @@
     <main-class name="org.jboss.as.server.Main"/>
 
     <resources>
-        <!-- Insert resources here -->
     </resources>
 
     <dependencies>
         <module name="javax.api"/>
         <!--
-        Xalan is optional dependancy and would need to be present in cases where runtime code needs xslt transformation otherwise
+        Xalan is optional dependency and would need to be present in cases where runtime code needs xslt transformation otherwise
         xslt parser will fallback to JDK provided xalan, which can cause issues.
          -->
         <module name="org.apache.xalan" services="import" optional="true"/>
@@ -45,5 +44,6 @@
         <module name="org.jboss.logmanager" services="import"/>
         <module name="org.jboss.as.jmx" services="import"/>
         <module name="org.jboss.as.server" export="true"/>
+        <module name="org.jboss.vfs" services="import"/>
     </dependencies>
 </module>

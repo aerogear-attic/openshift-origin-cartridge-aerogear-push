@@ -22,15 +22,14 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.jboss.as.webservices">
+<module xmlns="urn:jboss:module:1.3" name="org.jboss.as.webservices">
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
 
     <resources>
-        <resource-root path="wildfly-webservices-server-integration-8.0.0.Final.jar"/>
-        <resource-root path="jbossws-cxf-resources-4.2.3.Final-wildfly800.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="wildfly-webservices-server-integration-8.1.0.CR1.jar"/>
+        <resource-root path="jbossws-cxf-resources-4.2.4.Final-wildfly800.jar"/>
     </resources>
 
     <dependencies>

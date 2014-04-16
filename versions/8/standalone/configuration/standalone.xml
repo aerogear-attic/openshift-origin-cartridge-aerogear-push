@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:2.0">
+<server xmlns="urn:jboss:domain:2.1">
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.clustering.jgroups"/>
@@ -20,7 +20,6 @@
         <extension module="org.jboss.as.remoting"/>
         <extension module="org.jboss.as.sar"/>
         <extension module="org.jboss.as.security"/>
-        <extension module="org.jboss.as.threads"/>
         <extension module="org.jboss.as.transactions"/>
         <extension module="org.jboss.as.webservices"/>
         <extension module="org.jboss.as.weld"/>
@@ -32,7 +31,7 @@
         <security-realms>
             <security-realm name="ManagementRealm">
                 <authentication>
-                    <local default-user="$local"/>
+                    <local default-user="$local" skip-group-loading="true"/>
                     <properties path="mgmt-users.properties" relative-to="jboss.server.config.dir"/>
                 </authentication>
                 <authorization map-groups-to-roles="false">
@@ -41,7 +40,7 @@
             </security-realm>
             <security-realm name="ApplicationRealm">
                 <authentication>
-                    <local default-user="$local" allowed-users="*"/>
+                    <local default-user="$local" allowed-users="*" skip-group-loading="true"/>
                     <properties path="application-users.properties" relative-to="jboss.server.config.dir"/>
                 </authentication>
                 <authorization>
@@ -131,7 +130,7 @@
             </job-repository>
             <thread-pool>
                 <max-threads count="10"/>
-                <keepalive-time time="100" unit="milliseconds"/>
+                <keepalive-time time="30" unit="seconds"/>
             </thread-pool>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:datasources:2.0">
@@ -196,8 +195,6 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:2.0">
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
-            <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
-            <annotation-property-replacement>false</annotation-property-replacement>
             <concurrent>
                 <context-services>
                     <context-service name="default" jndi-name="java:jboss/ee/concurrency/context/default" use-transaction-setup-provider="true"/>
@@ -249,9 +246,9 @@
             <default-security-domain value="other"/>
             <default-missing-method-permissions-deny-access value="true"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:io:1.0">
-            <worker name="default" io-threads="3"/>
-            <buffer-pool name="default" buffer-size="16384" buffers-per-slice="128"/>
+        <subsystem xmlns="urn:jboss:domain:io:1.1">
+            <worker name="default"/>
+            <buffer-pool name="default"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:infinispan:2.0">
             <cache-container name="server" aliases="singleton cluster" default-cache="default" module="org.wildfly.clustering.server">
@@ -262,13 +259,13 @@
             </cache-container>
             <cache-container name="web" default-cache="dist" module="org.wildfly.clustering.web.infinispan">
                 <transport lock-timeout="60000"/>
-                <distributed-cache name="dist" mode="ASYNC" batching="true" l1-lifespan="0" owners="4">
+                <distributed-cache name="dist" mode="ASYNC" batching="true" l1-lifespan="0" owners="2">
                     <file-store/>
                 </distributed-cache>
             </cache-container>
             <cache-container name="ejb" aliases="sfsb" default-cache="dist" module="org.wildfly.clustering.ejb.infinispan">
                 <transport lock-timeout="60000"/>
-                <distributed-cache name="dist" mode="ASYNC" batching="true" l1-lifespan="0" owners="4">
+                <distributed-cache name="dist" mode="ASYNC" batching="true" l1-lifespan="0" owners="2">
                     <file-store/>
                 </distributed-cache>
             </cache-container>
@@ -394,7 +391,6 @@
                 </security-domain>
             </security-domains>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:threads:1.1"/>
         <subsystem xmlns="urn:jboss:domain:transactions:2.0">
             <core-environment>
                 <process-id>
@@ -402,12 +398,9 @@
                 </process-id>
             </core-environment>
             <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
-            <coordinator-environment default-timeout="300"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:undertow:1.0">
-            <buffer-caches>
-                <buffer-cache name="default" buffer-size="1024" buffers-per-region="1024" max-regions="10"/>
-            </buffer-caches>
+        <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+            <buffer-cache name="default"/>
             <server name="default-server">
                 <http-listener name="default" socket-binding="http" proxy-address-forwarding="true"/>
                 <host name="default-host" alias="localhost">
@@ -416,11 +409,11 @@
                     <filter-ref name="x-powered-by-header"/>
                 </host>
             </server>
-            <servlet-container name="default" default-buffer-cache="default" stack-trace-on-error="local-only">
+            <servlet-container name="default">
                 <jsp-config/>
             </servlet-container>
             <handlers>
-                <file name="welcome-content" path="${jboss.home.dir}/welcome-content" directory-listing="true"/>
+                <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
             </handlers>
             <filters>
                 <response-header name="server-header" header-name="Server" header-value="Wildfly 8"/>
@@ -428,7 +421,6 @@
             </filters>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:webservices:1.2">
-            <modify-wsdl-address>true</modify-wsdl-address>
             <wsdl-host>${jboss.bind.address:127.0.0.1}</wsdl-host>
             <endpoint-config name="Standard-Endpoint-Config"/>
             <endpoint-config name="Recording-Endpoint-Config">

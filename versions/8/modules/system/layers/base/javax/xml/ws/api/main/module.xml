@@ -22,7 +22,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="javax.xml.ws.api">
+<module xmlns="urn:jboss:module:1.3" name="javax.xml.ws.api">
     <dependencies>
         <module name="javax.xml.bind.api" export="true"/>
         <module name="javax.xml.soap.api" export="true"/>
@@ -32,6 +32,5 @@
 
     <resources>
         <resource-root path="jboss-jaxws-api_2.2_spec-2.0.2.Final.jar"/>
-        <!-- Insert resources here -->
     </resources>
 </module>

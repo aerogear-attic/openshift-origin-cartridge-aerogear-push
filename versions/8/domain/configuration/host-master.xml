@@ -4,13 +4,13 @@
    A simple configuration for a Host Controller that only acts as the master domain controller
    and does not itself directly control any servers.
 -->
-<host name="master" xmlns="urn:jboss:domain:2.0">
+<host name="master" xmlns="urn:jboss:domain:2.1">
 
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
                 <authentication>
-                    <local default-user="$local" />
+                    <local default-user="$local" skip-group-loading="true" />
                     <properties path="mgmt-users.properties" relative-to="jboss.domain.config.dir"/>
                 </authentication>
                 <authorization map-groups-to-roles="false">
@@ -19,7 +19,7 @@
             </security-realm>
             <security-realm name="ApplicationRealm">
                 <authentication>
-                     <local default-user="$local" allowed-users="*" />
+                     <local default-user="$local" allowed-users="*" skip-group-loading="true" />
                      <properties path="application-users.properties" relative-to="jboss.domain.config.dir" />
                 </authentication>
                 <authorization>

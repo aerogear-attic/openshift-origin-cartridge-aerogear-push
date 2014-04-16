@@ -22,7 +22,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.jboss.as.jdr">
+<module xmlns="urn:jboss:module:1.3" name="org.jboss.as.jdr">
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
@@ -30,8 +30,7 @@
     <main-class name="org.jboss.as.jdr.CommandLineMain"/>
 
     <resources>
-        <resource-root path="wildfly-jdr-8.0.0.Final.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="wildfly-jdr-8.1.0.CR1.jar"/>
         <resource-root path="resources"/>
     </resources>
 

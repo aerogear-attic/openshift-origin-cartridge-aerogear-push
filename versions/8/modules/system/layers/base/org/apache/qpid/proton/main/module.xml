@@ -22,12 +22,11 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.apache.qpid.proton">
+<module xmlns="urn:jboss:module:1.3" name="org.apache.qpid.proton">
     <resources>
         <resource-root path="proton-api-0.4.jar"/>
         <resource-root path="proton-jms-0.4.jar"/>
         <resource-root path="proton-j-impl-0.4.jar"/>
-        <!-- Insert resources here -->
     </resources>
 
     <dependencies>

@@ -22,14 +22,13 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.jboss.ironjacamar.jdbcadapters">
+<module xmlns="urn:jboss:module:1.3" name="org.jboss.ironjacamar.jdbcadapters">
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
 
     <resources>
-        <resource-root path="ironjacamar-jdbc-1.1.3.Final.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="ironjacamar-jdbc-1.1.5.Final.jar"/>
     </resources>
 
     <dependencies>

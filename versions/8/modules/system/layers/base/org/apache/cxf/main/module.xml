@@ -22,11 +22,10 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.1" name="org.apache.cxf">
+<module xmlns="urn:jboss:module:1.3" name="org.apache.cxf">
 
     <resources>
-        <resource-root path="cxf-api-2.7.7.jar"/>
-        <!-- Insert resources here -->
+        <resource-root path="cxf-api-2.7.10.jar"/>
     </resources>
 
     <dependencies>
