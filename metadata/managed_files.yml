@@ -1,4 +1,6 @@
 ---
+snapshot_exclusions:
+- ~/wildfly/versions/8/**/*
 locked_files:
 - bin/
 - bin/*
