@@ -50,4 +50,20 @@ client_result ""
 touch ${OPENSHIFT_WILDFLY_DIR}/env/OPENSHIFT_WILDFLY_CLUSTER
 #touch ${OPENSHIFT_WILDFLY_DIR}/env/OPENSHIFT_JBOSSAS_CLUSTER_REMOTING
 
-update-configuration java7
+# Install Oracle JDK 8 (this should be removed once OpenShift provides support for JDK 8)
+pushd $OPENSHIFT_WILDFLY_DIR/usr/lib/jvm > /dev/null
+    if wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-i586.tar.gz > /dev/null; then
+        tar -xzf jdk-8u5-linux-i586.tar.gz
+        rm jdk-8u5-linux-i586.tar.gz
+        update-configuration java8
+    else
+        # Just in case the install fails for some reason
+        client_message "JDK 8 could not be installed, defaulting to JDK 7 instead"
+        mv ${OPENSHIFT_WILDFLY_DIR}/template/.openshift/markers/java8 ${OPENSHIFT_WILDFLY_DIR}/template/.openshift/markers/java7
+        sed -i "s/<maven.compiler.source>1.8<\/maven.compiler.source>/<maven.compiler.source>1.7<\/maven.compiler.source>/g" ${OPENSHIFT_WILDFLY_DIR}/template/pom.xml
+        sed -i "s/<maven.compiler.target>1.8<\/maven.compiler.target>/<maven.compiler.target>1.7<\/maven.compiler.target>/g" ${OPENSHIFT_WILDFLY_DIR}/template/pom.xml
+        sed -i '/<maven.compiler.executable>${env.OPENSHIFT_WILDFLY_DIR}usr\/lib\/jvm\/jdk1.8.0_05\/bin\/javac<\/maven.compiler.executable>/d' ${OPENSHIFT_WILDFLY_DIR}/template/pom.xml
+        sed -i '/<maven.compiler.fork>true<\/maven.compiler.fork>/d' ${OPENSHIFT_WILDFLY_DIR}/template/pom.xml
+        update-configuration java7
+    fi
+popd > /dev/null
