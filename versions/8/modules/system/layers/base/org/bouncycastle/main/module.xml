@@ -24,8 +24,9 @@
 
 <module xmlns="urn:jboss:module:1.3" name="org.bouncycastle">
     <resources>
-        <resource-root path="bcprov-jdk16-1.46.jar"/>
-        <resource-root path="bcmail-jdk16-1.46.jar"/>
+        <resource-root path="bcprov-jdk15on-1.50.jar"/>
+        <resource-root path="bcmail-jdk15on-1.50.jar"/>
+        <resource-root path="bcpkix-jdk15on-1.50.jar"/>
     </resources>
     <dependencies>
         <module name="javax.api"/>
