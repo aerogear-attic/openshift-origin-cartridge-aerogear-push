@@ -261,10 +261,11 @@ function build() {
 function deploy() {
   echo "Deploying WildFly"
 
+  # if repo/deployments has any files in it, sync them to $WILDFLY_DEPLOYMENTS_DIR
+  # and delete any files in $WILDFLY_DEPLOYMENTS_DIR that don't exist in
+  # repo/deployments
   if [ "$(ls ${OPENSHIFT_REPO_DIR}/deployments)" ]; then
     rsync -r --delete --exclude ".*" ${OPENSHIFT_REPO_DIR}/deployments/ $WILDFLY_DEPLOYMENTS_DIR
-  else
-    rm -rf ${WILDFLY_DEPLOYMENTS_DIR}/*
   fi
 }
 
