@@ -32,7 +32,7 @@ Then, create your new WildFly app:
 
 This creates an application that's a clone of your existing one (i.e., same gear size, scaling configuration, environment variables, git repository, etc.). This means that your new WildFly application will have the same configuration and deployment(s) as your existing application.
 
-It will take some time to complete, so be patient.
+Because the --from-app command relies on an application snapshot, it will take some time to complete (be patient!).
 
 ### JBoss CLI
 
