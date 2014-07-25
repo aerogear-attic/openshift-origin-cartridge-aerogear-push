@@ -32,7 +32,7 @@ function waitondeployments() {
     if ! ismgmtup; then
       client_message "Timed out waiting for management listening port"
       client_message "Could not connect to WildFly management interface, skipping deployment verification"
-    else 
+    else
       getscanconfig
 
       if [ "$SCANCONFIG" == "" ]; then
@@ -52,15 +52,15 @@ function waitondeployments() {
         deployarchive=false
         if [[ $SCANCONFIG =~ '"auto-deploy-zipped" => true' ]]; then
           deployarchive=true
-        fi 
+        fi
 
         artifactsdeployed=()
         artifactsfailed=()
         artifactsskipped=()
         artifactsunknown=()
         for artifact in ${artifacts[*]}; do
-          if ( [ -f $artifact ] && $deployarchive ) || ( [ -d $artifact ] && $deployexploded ); then         
-            # TODO triple check this logic, add a timeout 
+          if ( [ -f $artifact ] && $deployarchive ) || ( [ -d $artifact ] && $deployexploded ); then
+            # TODO triple check this logic, add a timeout
             while [ -f ${artifact}.isdeploying ]; do
               client_message "Artifact: ${artifact} is still deploying"
               sleep 10
@@ -160,6 +160,13 @@ function ishttpup() {
             echo "Found ${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_HTTP_PORT} listening port"
             return 0
         fi
+        # if the process failed to start, error out immediately
+        # rather than waiting for the timeout on the port being available.
+        wpid=$(cat $WILDFLY_PID_FILE);
+        if ! ps | grep -v grep | grep $wpid > /dev/null; then
+          return 2
+        fi
+
         let count=${count}+1
 
         sleep 2
@@ -280,14 +287,19 @@ function start() {
   # Check for running app
   if isrunning; then
       echo "Application is already running"
-  else    
-	${WILDFLY_BIN_DIR}/standalone.sh -b $OPENSHIFT_WILDFLY_IP -bmanagement=$OPENSHIFT_WILDFLY_IP > $OPENSHIFT_WILDFLY_DIR/logs/server.log 2>&1 &  
+  else
+    ${WILDFLY_BIN_DIR}/standalone.sh -b $OPENSHIFT_WILDFLY_IP -bmanagement=$OPENSHIFT_WILDFLY_IP > $OPENSHIFT_WILDFLY_DIR/logs/server.log 2>&1 &
     PROCESS_ID=$!
     echo "$PROCESS_ID" > ${WILDFLY_PID_FILE}
 
-    if ! ishttpup; then
-        echo "Timed out waiting for http listening port"
-        exit 1
+    rc=0
+    ishttpup || rc=$?
+    if [ $rc -eq 1 ]; then
+      echo "Timed out waiting for http listening port for $cartridge_type process"
+      exit 1
+    elif [ $rc -eq 2 ]; then
+      echo "$cartridge_type process failed to start"
+      exit 2
     fi
 
     waitondeployments
@@ -351,7 +363,7 @@ function threaddump() {
         client_result "Success"
         client_result ""
         client_result "The thread dump file will be available via: rhc tail $OPENSHIFT_APP_NAME -f ${OPENSHIFT_TMP_DIR}${cartridge_type}.log -o '-n 250'"
-    else 
+    else
         echo "Failed to locate WildFly PID File"
     fi
 }
