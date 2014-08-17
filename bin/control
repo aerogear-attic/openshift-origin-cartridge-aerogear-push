@@ -253,11 +253,11 @@ function build() {
 
           if [ -n "$OPENSHIFT_MAVEN_MIRROR" ]
           then
-              mvn --global-settings $OPENSHIFT_MAVEN_MIRROR --version
-              mvn --global-settings $OPENSHIFT_MAVEN_MIRROR $MAVEN_ARGS
+              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR --version
+              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR $MAVEN_ARGS
           else
-              mvn --version
-              mvn $MAVEN_ARGS
+              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --version
+              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn $MAVEN_ARGS
           fi
           popd > /dev/null
       fi
