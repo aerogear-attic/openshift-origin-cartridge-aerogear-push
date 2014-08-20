@@ -14,7 +14,9 @@ Categories:
   - java
   - wildfly
   - java_ee_7
-Website: http://www.wildfly.org
+Requires:
+  - mysql-5.5
+Website: http://www.aerogear.org
 Help-Topics:
   "Developer Center": https://www.openshift.com/developers
 Cart-Data:
@@ -52,6 +54,8 @@ Provides:
   - wildfly-8
   - "wildfly"
   - wildfly-standalone
+Requires:
+  - mysql-5.5
 Publishes:
   publish-http-url:
     Type: "NET_TCP:httpd-proxy-info"
