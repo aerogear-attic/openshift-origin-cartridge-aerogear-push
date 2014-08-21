@@ -147,7 +147,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/UnifiedPushDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="UnifiedPushDS" use-ccm="true">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
+                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}?useUnicode=true&amp;characterEncoding=UTF-8</connection-url>
                     <driver>mysql</driver>
                     <security>
                       <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
