@@ -3,13 +3,13 @@
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 WILDFLY_BIN_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
-WILDFLY_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/jbossas.pid
+WILDFLY_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/aerogear_push.pid
 WILDFLY_DEPLOYMENTS_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/deployments
 SCANCONFIG=""
 
 source $WILDFLY_BIN_DIR/util
 
-cartridge_type="wildfly"
+cartridge_type="aerogear-push"
 
 # Return the deployment-scanner configuration
 function getscanconfig() {
