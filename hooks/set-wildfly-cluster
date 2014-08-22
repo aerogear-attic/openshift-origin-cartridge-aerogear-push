@@ -17,5 +17,5 @@ for arg in $kvargs; do
     fi
 done
 
-ls -ld $OPENSHIFT_WILDFLY_DIR/env >& /tmp/set.txt
-echo $list > $OPENSHIFT_WILDFLY_DIR/env/OPENSHIFT_WILDFLY_CLUSTER
+ls -ld $OPENSHIFT_AEROGEAR_PUSH_DIR/env >& /tmp/set.txt
+echo $list > $OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_CLUSTER

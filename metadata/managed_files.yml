@@ -3,6 +3,8 @@ snapshot_exclusions:
 - ~/wildfly/versions/8
 - ~/wildfly/modules
 - ~/wildfly/usr/lib/jvm
+- ~/aerogear-push/versions
+- ~/aerogear-push/modules
 locked_files:
 - bin/
 - bin/*
@@ -13,10 +15,10 @@ locked_files:
 - hooks/
 - hooks/*
 - env/
-- env/OPENSHIFT_WILDFLY_DIR
-- env/OPENSHIFT_WILDFLY_LOG_DIR
-- env/OPENSHIFT_WILDFLY_JDK*
-- env/OPENSHIFT_WILDFLY_VERSION
+- env/OPENSHIFT_AEROGEAR_PUSH_DIR
+- env/OPENSHIFT_AEROGEAR_PUSH_LOG_DIR
+- env/OPENSHIFT_AEROGEAR_PUSH_JDK*
+- env/OPENSHIFT_AEROGEAR_PUSH_VERSION
 - env/M2_HOME
 - usr/lib/jvm/
 - usr/lib/jvm/*

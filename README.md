@@ -1,81 +1,78 @@
-# OpenShift WildFly Cartridge
+# OpenShift AeroGear Push Server Cartridge
 
-This cartridge is running WildFly 8.1.0.Final
+Provides the _AeroGear UnifiedPush Server_ running on top of JBoss Application Server on OpenShift and embeds the _AeroGear SimplePush Server_ within JBoss Application Server on OpenShift. 
 
-This cartridge is based on the JBoss AS cartridge found in OpenShift Origin [here](https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-jbossas).  
+The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unified-push-server) is a server that allows sending push notifications to different (mobile) platforms. The initial version of the server supports [Apple’s APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla’s SimplePush](https://wiki.mozilla.org/WebAPI/SimplePush).
 
-Pretty much everything seems to be working fine, but it can still use some testing.  
+The [AeroGear SimplePush Server](https://github.com/aerogear/aerogear-simplepush-server) is a Java server side implementation of Mozilla's [SimplePush Protocol](https://wiki.mozilla.org/WebAPI/SimplePush/Protocol) that describes a JavaScript API and a protocol which allows backend/application developers to send notification messages to their web applications. 
 
-If you find any issues, please log them in the [issues](https://github.com/openshift-cartridges/openshift-wildfly-cartridge/issues) section of the [github](https://github.com/openshift-cartridges/openshift-wildfly-cartridge) project.  
+### Installation
+The AeroGear Push Server cartridge defaults to using MySQL. When creating your application, you'll also want to add the MySQL cartridge:
 
-This cartridge will act very similarly to the jbossas-7 cartridge that you can create a gear with.  
-You should be able to modify the code in the /src directory of the git repository, and do a git add, git commit, and git push and have it deployed as ROOT.war.  
-You can also remove the pom.xml and /src directories and place a war file in the deployments directory and they should deploy like they do on JBoss AS 7  
+```
+rhc app create --no-git <APP> https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push
+```
 
-### Create a new WildFly app
+### Getting started with the AeroGear UnifiedPush Server
 
-There are a few ways to get started quickly on OpenShift. To create a new WildFly app using the OpenShift Web Console, click on "Deploy Now" [here](https://www.openshift.com/quickstarts/wildfly-8). If you'd like to use the OpenShift [command line tools](https://www.openshift.com/get-started) instead, the following command can be used:
+#### Administration Console
 
-	rhc app create wildfly https://cartreflect-claytondev.rhcloud.com/reflect?github=openshift-cartridges/openshift-wildfly-cartridge
-	
-It will take a few minutes to build, so be patient.
+Once the server is running access it via ```https://{APP}-{NAMESPACE}.rhcloud.com/ag-push```. Check the Administration console [user guide](http://aerogear.org/docs/guides/AdminConsoleGuide/) for more information on using the console.
 
-### Create a new WildFly app based on an existing app
+#### Login
 
-If you already have an existing WildFly OpenShift application, you can create a new WildFly app based on the existing one using the RHC --from-app command. First, make sure you have the latest version of the OpenShift command line tools:
+Temporarily, there is an "admin:123" user.  On _first_ login,  you will need to change the password.
 
-    gem update rhc
+### Getting started with the AeroGear SimplePush Server
 
-Then, create your new WildFly app:
+#### Client connections
 
-    rhc app create <NEW_WILDFLY_APP> --from-app <OLD_WILDFLY_APP>
+For _secured_ connections, client applications should connect to the _AeroGear SimplePush Server_ via ```https://{APP}-{NAMESPACE}.rhcloud.com:8443/simplepush```.
 
-This creates an application that's a clone of your existing one (i.e., same gear size, scaling configuration, environment variables, git repository, etc.). This means that your new WildFly application will have the same configuration and deployment(s) as your existing application.
+For _unsecured_ connections, client applications can connect to the _AeroGear SimplePush Server_ via ```http://{APP}-{NAMESPACE}.rhcloud.com:8000/simplepush```.
 
-Because the --from-app command relies on an application snapshot, it will take some time to complete (be patient!).
+**NOTE:** It is recommended that you always use _secured_ connections.
 
-### JBoss CLI
+#### Known issue with an idled OpenShift application and WebSocket requests
 
-This cartridge provides an OpenShift compatible wrapper of the JBoss CLI tool on the gear PATH, located at $OPENSHIFT_WILDFLY_DIR/bin/tools/jboss-cli.sh. Use the following command to connect to the WildFly instance with the CLI tool:
+Currently, if your AeroGear Push Server application is [idled by OpenShift](https://www.openshift.com/faq/what-happens-if-my-application-is-not-used-for-a-long-time), attempts to establish a WebSocket connection to the _AeroGear SimplePush Server_ will not wake up your idled application. This is a known issue (see [AEROGEAR-1296](https://issues.jboss.org/browse/AEROGEAR-1296)) and will be fixed in a future release of OpenShift Online. Note that requests to your application on port 80 (i.e., ```http://{APP}-{NAMESPACE}.rhcloud.com```) will wake up your idled application.
 
-        jboss-cli.sh -c --controller=$OPENSHIFT_WILDFLY_IP:$OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT
 
-###Super Secret Hint (Don't tell anyone)
+### Template Repository Layout
 
-If you run the rhc port-forward command, you can access the WildFly management interface on port 9990.  
-A username and password is created when you install this cartridge.  
-If you don't write it down, fear not, the following environment variables will contain them.  
-$OPENSHIFT_WILDFLY_USERNAME  
-$OPENSHIFT_WILDFLY_PASSWORD
+    .openshift/        Location for OpenShift specific files
+      action_hooks/    See the Action Hooks documentation [1]
+      markers/         See the Markers section [2]
 
-	corey$ rhc port-forward wildfly
-	Checking available ports ... done
-	Forwarding ports ...
+\[1\] [Action Hooks documentation](https://github.com/openshift/origin-server/blob/master/node/README.writing_applications.md#action-hooks)
+\[2\] [Markers](#markers)
 
-	To connect to a service running on OpenShift, use the Local address
 
-	Service Local               OpenShift
-	------- -------------- ---- -------------------
-	java    127.0.0.1:8080  =>  127.13.118.129:8080
-	java    127.0.0.1:9990  =>  127.13.118.129:9990
-	java    127.0.0.1:9999  =>  127.13.118.129:9999
-	
-In this example, you would visit 127.0.0.1:9990 to access the WildFly Admin Console from your local computer.
+### Environment Variables
+
+The `aerogear-push` cartridge provides several environment variables to reference for ease
+of use:
+
+    OPENSHIFT_AEROGEAR_PUSH_IP                         The IP address used to bind JBossAS
+    OPENSHIFT_AEROGEAR_PUSH_HTTP_PORT                  The JBossAS listening port
+    OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY                  The token key for the SimplePush Server
+    OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT               
+    OPENSHIFT_AEROGEAR_PUSH_MESSAGING_PORT             
+    OPENSHIFT_AEROGEAR_PUSH_MESSAGING_THROUGHPUT_PORT  
+    OPENSHIFT_AEROGEAR_PUSH_REMOTING_PORT              
+    JAVA_OPTS_EXT                                      Appended to JAVA_OPTS prior to invoking the Java VM
+
+For more information about environment variables, consult the
+[OpenShift Application Author Guide](https://github.com/openshift/origin-server/blob/master/node/README.writing_applications.md).
 
 ### Markers
 
 Adding marker files to `.openshift/markers` will have the following effects:
 
-    java8                Will run WildFly with Java 8 if present
+    enable_jpda          Will enable the JPDA socket based transport on the java virtual
+                         machine running the JBoss AS 7 application server. This enables
+                         you to remotely debug code running inside the JBoss AS 7
+                         application server.
 
-    java7                Will run WildFly with Java 7 if present
-
-New WildFly apps will default to using Java 8.
-
-### Thanks to the following:
-Stian Thorgersen for this blog article that helped get this going!
-https://community.jboss.org/people/stianst/blog/2013/06/13/run-wildfly-on-openshift-using-the-diy-cartridge
-
-Also thanks to the OpenShift team, and the users on the #wildfly channel on Freenode for helping answer questions and helping troubleshoot inter-gear management connection issues.
-
-
+    java7                Will run JBossAS with Java7 if present. If no marker is present
+                         then the baseline Java version will be used (currently Java6)

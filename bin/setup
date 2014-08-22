@@ -7,18 +7,18 @@ esac
 
 # Create additional directories required by JBOSSAS
 mkdir -p ${OPENSHIFT_HOMEDIR}/.m2
-mkdir -p ${OPENSHIFT_WILDFLY_DIR}/{template,standalone/tmp,standalone/deployments,standalone/configuration,standalone/log,standalone/data}
+mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/{template,standalone/tmp,standalone/deployments,standalone/configuration,standalone/log,standalone/data}
 
 # This should be removed once OpenShift provides support for JDK 8
-mkdir -p $OPENSHIFT_WILDFLY_DIR/usr/lib/jvm
+mkdir -p $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/jvm
 
 # Copy the version specific files up to jbossas directory
-cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_WILDFLY_DIR}standalone/configuration
-cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/bin/* ${OPENSHIFT_WILDFLY_DIR}/bin
-cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/* ${OPENSHIFT_WILDFLY_DIR}/
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}standalone/configuration
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/bin/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/
 
 # Initialize the JBoss CLI history file
 [ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
 
-mkdir -p $OPENSHIFT_WILDFLY_DIR/jboss_cfg_backup
-cp -n ${OPENSHIFT_WILDFLY_DIR}/versions/${version}/standalone/configuration/standalone.xml $OPENSHIFT_WILDFLY_DIR/jboss_cfg_backup/standalone.xml
+mkdir -p $OPENSHIFT_AEROGEAR_PUSH_DIR/jboss_cfg_backup
+cp -n ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/configuration/standalone.xml $OPENSHIFT_AEROGEAR_PUSH_DIR/jboss_cfg_backup/standalone.xml

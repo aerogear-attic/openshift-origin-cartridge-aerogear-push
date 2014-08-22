@@ -325,14 +325,14 @@
             <stack name="tcp">
                 <transport type="TCP" socket-binding="jgroups-tcp"> 
                     <property name="external_addr">${env.OPENSHIFT_GEAR_DNS}</property>
-                    <property name="external_port">${env.OPENSHIFT_WILDFLY_CLUSTER_PROXY_PORT}</property>
-                    <property name="bind_port">${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}</property>
-                    <property name="bind_addr">${env.OPENSHIFT_WILDFLY_IP}</property>
+                    <property name="external_port">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PROXY_PORT}</property>
+                    <property name="bind_port">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT}</property>
+                    <property name="bind_addr">${env.OPENSHIFT_AEROGEAR_PUSH_IP}</property>
                     <property name="defer_client_bind_addr">true</property>
                 </transport>
                 <protocol type="TCPPING">
                     <property name="timeout">30000</property>
-                    <property name="initial_hosts">${env.OPENSHIFT_WILDFLY_CLUSTER}</property>
+                    <property name="initial_hosts">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER}</property>
                     <property name="port_range">0</property>
                     <property name="num_initial_members">1</property>
                 </protocol>
@@ -526,10 +526,10 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+            <loopback-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
         </interface>
         <interface name="public">
-            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+            <loopback-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
         </interface>
         <!-- TODO - only show this if the jacorb subsystem is added  -->
         <interface name="unsecure">
@@ -537,13 +537,13 @@
               ~  Used for IIOP sockets in the standard configuration.
               ~                  To secure JacORB you need to setup SSL 
               -->
-            <inet-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+            <inet-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
-        <socket-binding name="jgroups-tcp" port="${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}"/>
+        <socket-binding name="jgroups-tcp" port="${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT}"/>
         <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
         <socket-binding name="http" port="${jboss.http.port:8080}"/>
         <socket-binding name="https" port="${jboss.https.port:8443}"/>

@@ -2,9 +2,9 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-WILDFLY_BIN_DIR=${OPENSHIFT_WILDFLY_DIR}/bin
+WILDFLY_BIN_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
 WILDFLY_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/jbossas.pid
-WILDFLY_DEPLOYMENTS_DIR=${OPENSHIFT_WILDFLY_DIR}/standalone/deployments
+WILDFLY_DEPLOYMENTS_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/deployments
 SCANCONFIG=""
 
 source $WILDFLY_BIN_DIR/util
@@ -15,8 +15,8 @@ cartridge_type="wildfly"
 function getscanconfig() {
     count=0
     while [ ${count} -lt 4 ]; do
-      controller="${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT}"
-      scanconfig=`$OPENSHIFT_WILDFLY_DIR/bin/tools/jboss-cli.sh -c --controller=${controller} "/subsystem=deployment-scanner/:read-resource(recursive=true)" 2>&1 || :`
+      controller="${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_MANAGEMENT_HTTP_PORT}"
+      scanconfig=`$OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/jboss-cli.sh -c --controller=${controller} "/subsystem=deployment-scanner/:read-resource(recursive=true)" 2>&1 || :`
       if [[ $scanconfig =~ '"outcome" => "success"' ]] ; then
         SCANCONFIG=$scanconfig
         return
@@ -156,8 +156,8 @@ function ishttpup() {
     let count=0
     while [ ${count} -lt 64 ]
     do
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
-            echo "Found ${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_HTTP_PORT} listening port"
+        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+            echo "Found ${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_HTTP_PORT} listening port"
             return 0
         fi
         # if the process failed to start, error out immediately
@@ -180,8 +180,8 @@ function ismgmtup() {
     let count=0
     while [ ${count} -lt 64 ]
     do
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
-            echo "Found ${OPENSHIFT_WILDFLY_IP}:${OPENSHIFT_WILDFLY_MANAGEMENT_HTTP_PORT} listening port"
+        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_MANAGEMENT_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+            echo "Found ${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_MANAGEMENT_HTTP_PORT} listening port"
             return 0
         fi
         let count=${count}+1
@@ -193,7 +193,7 @@ function ismgmtup() {
 }
 
 function build() {
-  CONFIG_DIR="${OPENSHIFT_WILDFLY_DIR}/standalone/configuration"
+  CONFIG_DIR="${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration"
   OPENSHIFT_MAVEN_MIRROR="${CONFIG_DIR}/settings.base.xml"
   if [[ $OPENSHIFT_GEAR_DNS =~ .*\.rhcloud\.com$ ]]
   then
@@ -253,11 +253,11 @@ function build() {
 
           if [ -n "$OPENSHIFT_MAVEN_MIRROR" ]
           then
-              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR --version
-              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR $MAVEN_ARGS
+              $OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR --version
+              $OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/mvn --global-settings $OPENSHIFT_MAVEN_MIRROR $MAVEN_ARGS
           else
-              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn --version
-              $OPENSHIFT_WILDFLY_DIR/bin/tools/mvn $MAVEN_ARGS
+              $OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/mvn --version
+              $OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/mvn $MAVEN_ARGS
           fi
           popd > /dev/null
       fi
@@ -288,7 +288,7 @@ function start() {
   if isrunning; then
       echo "Application is already running"
   else
-    ${WILDFLY_BIN_DIR}/standalone.sh -b $OPENSHIFT_WILDFLY_IP -bmanagement=$OPENSHIFT_WILDFLY_IP > $OPENSHIFT_WILDFLY_DIR/logs/server.log 2>&1 &
+    ${WILDFLY_BIN_DIR}/standalone.sh -b $OPENSHIFT_AEROGEAR_PUSH_IP -bmanagement=$OPENSHIFT_AEROGEAR_PUSH_IP > $OPENSHIFT_AEROGEAR_PUSH_DIR/logs/server.log 2>&1 &
     PROCESS_ID=$!
     echo "$PROCESS_ID" > ${WILDFLY_PID_FILE}
 
@@ -345,9 +345,9 @@ function reload() {
 
 # Clean up any log files
 function tidy() {
-  client_message "Emptying log dir: $OPENSHIFT_WILDFLY_LOG_DIR"
+  client_message "Emptying log dir: $OPENSHIFT_AEROGEAR_PUSH_LOG_DIR"
   shopt -s dotglob
-  rm -rf $OPENSHIFT_WILDFLY_LOG_DIR/*
+  rm -rf $OPENSHIFT_AEROGEAR_PUSH_LOG_DIR/*
 }
 
 function threaddump() {
