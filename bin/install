@@ -17,13 +17,6 @@ cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/aut
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/ag-push.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 
 
-sed -i "s/{APP_NAME}/${OPENSHIFT_APP_NAME}/g" ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template/pom.xml
-
-# Create and install the initial template WAR
-pushd $OPENSHIFT_AEROGEAR_PUSH_DIR/versions/${version}/template/src/main/webapp 1> /dev/null
-  jar cvf $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments/ROOT.war ./*
-popd 1> /dev/null
-
 client_result ""
 client_result "Aerogear Push Server added.  Please make note of these default credentials:"
 client_result ""
