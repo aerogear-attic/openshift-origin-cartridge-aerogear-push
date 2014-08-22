@@ -1,13 +1,13 @@
 #!/bin/bash -eu
 
-source OPENSHIFT_AEROGEAR_PUSH_DIR/bin/util
+source $OPENSHIFT_AEROGEAR_PUSH_DIR/bin/util
 
 case "$1" in
   -v|--version)
     version="$2"
 esac
 
-echo "$version" > "OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_VERSION"
+echo "$version" > "$OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_VERSION"
 
 ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/log ${OPENSHIFT_AEROGEAR_PUSH_DIR}/logs
 
@@ -17,25 +17,12 @@ cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/aut
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/ag-push.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 
 
-###shopt -s dotglob
-###cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/template/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template
-###cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/template/.openshift ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template
-###cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration/standalone.xml ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template/.openshift/config/standalone.xml
-
 sed -i "s/{APP_NAME}/${OPENSHIFT_APP_NAME}/g" ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template/pom.xml
 
 # Create and install the initial template WAR
-pushd OPENSHIFT_AEROGEAR_PUSH_DIR/versions/${version}/template/src/main/webapp 1> /dev/null
-  jar cvf OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments/ROOT.war ./*
+pushd $OPENSHIFT_AEROGEAR_PUSH_DIR/versions/${version}/template/src/main/webapp 1> /dev/null
+  jar cvf $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments/ROOT.war ./*
 popd 1> /dev/null
-
-##username=$(generate_username)
-##password=$(generate_password)
-
-##echo "$username" > OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_USERNAME
-##echo "$password" > OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_PASSWORD
-
-OPENSHIFT_AEROGEAR_PUSH_DIR/bin/add-user.sh --user ${username} --password ${password} --silent --enable
 
 client_result ""
 client_result "Aerogear Push Server added.  Please make note of these default credentials:"
@@ -55,7 +42,7 @@ touch ${OPENSHIFT_AEROGEAR_PUSH_DIR}/env/OPENSHIFT_AEROGEAR_PUSH_CLUSTER
 #touch ${OPENSHIFT_AEROGEAR_PUSH_DIR}/env/OPENSHIFT_JBOSSAS_CLUSTER_REMOTING
 
 # Install Oracle JDK 8 (this should be removed once OpenShift provides support for JDK 8)
-pushd OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/jvm > /dev/null
+pushd $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/jvm > /dev/null
     if wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-i586.tar.gz > /dev/null; then
         tar -xzf jdk-8u5-linux-i586.tar.gz
         rm jdk-8u5-linux-i586.tar.gz
