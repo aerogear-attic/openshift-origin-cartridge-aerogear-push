@@ -2,6 +2,7 @@
 
 <server xmlns="urn:jboss:domain:2.1">
     <extensions>
+        <extension module="org.jboss.aerogear.simplepush"/>        
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.clustering.jgroups"/>
         <extension module="org.jboss.as.connector"/>
@@ -80,6 +81,13 @@
         </access-control>
     </management>
     <profile>
+        <subsystem xmlns="urn:org.jboss.aerogear.simplepush:1.0">
+            <server socket-binding="simplepush" password="${env.OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY}" endpoint-tls="true" endpoint-socket-binding="simplepush-notify">
+                <datastore>
+                    <jpa datasource-jndi-name="java:jboss/datasources/SimplePushDS" persistence-unit="SimplePushPU"/>
+                </datastore>
+            </server>
+        </subsystem>
         <subsystem xmlns="urn:jboss:domain:logging:2.0">
             <console-handler name="CONSOLE">
                 <level name="INFO"/>
@@ -158,6 +166,22 @@
                         <background-validation>true</background-validation>
                         <background-validation-millis>60000</background-validation-millis>
                         <!--<validate-on-match>true</validate-on-match>-->
+                    </validation>
+                    <pool>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
+                </datasource>
+
+                <datasource jndi-name="java:jboss/datasources/SimplePushDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="SimplePushDS" use-ccm="true">
+                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
+                    <driver>mysql</driver>
+                    <security>
+                      <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
+                      <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
                     </validation>
                     <pool>
                         <flush-strategy>IdleConnections</flush-strategy>
@@ -549,6 +573,8 @@
         <socket-binding name="https" port="${jboss.https.port:8443}"/>
         <socket-binding name="jacorb" interface="unsecure" port="3528"/>
         <socket-binding name="jacorb-ssl" interface="unsecure" port="3529"/>
+        <socket-binding name="simplepush" port="8676"/>
+        <socket-binding name="simplepush-notify" interface="external" port="8443"/>
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>
         <outbound-socket-binding name="mail-smtp">

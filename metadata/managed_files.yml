@@ -2,7 +2,6 @@
 snapshot_exclusions:
 - ~/aerogear-push/versions
 - ~/aerogear-push/modules
-- ~/aerogear-push/usr/lib/jvm
 locked_files:
 - bin/
 - bin/*
@@ -18,8 +17,18 @@ locked_files:
 - env/OPENSHIFT_AEROGEAR_PUSH_JDK*
 - env/OPENSHIFT_AEROGEAR_PUSH_VERSION
 - env/M2_HOME
-- usr/lib/jvm/
-- usr/lib/jvm/*
+- standalone/deployments/*
+- usr/modules/org/
+- usr/modules/org/jboss/
+- usr/modules/org/jboss/aerogear/
+- usr/modules/org/jboss/aerogear/simplepush/
+- usr/modules/org/jboss/aerogear/simplepush/main/
+- usr/modules/org/jboss/aerogear/simplepush/main/*
+- versions/1.0.0/modules/org/
+- versions/1.0.0/modules/org/jboss/
+- versions/1.0.0/modules/org/jboss/aerogear/
+- versions/1.0.0/modules/org/jboss/aerogear/simplepush/
+- versions/1.0.0/modules/org/jboss/aerogear/simplepush/main/
+- versions/1.0.0/modules/org/jboss/aerogear/simplepush/main/*
 processed_templates:
-- 'metadata/jenkins_shell_command.erb'
-- 'metadata/jenkins_artifacts_glob.erb'
+- '**/*.erb'
