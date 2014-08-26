@@ -13,12 +13,12 @@ mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/{template,standalone/tmp,standalone/depl
 ##mkdir -p $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/jvm
 
 # Copy the version specific files up to jbossas directory
-cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}standalone/configuration
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/bin/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/
 
 # Initialize the JBoss CLI history file
 [ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
 
-mkdir -p $OPENSHIFT_AEROGEAR_PUSH_DIR/jboss_cfg_backup
-cp -n ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/configuration/standalone.xml $OPENSHIFT_AEROGEAR_PUSH_DIR/jboss_cfg_backup/standalone.xml
+mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/jboss_cfg_backup
+cp -n ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/configuration/standalone.xml ${OPENSHIFT_AEROGEAR_PUSH_DIR}/jboss_cfg_backup/standalone.xml

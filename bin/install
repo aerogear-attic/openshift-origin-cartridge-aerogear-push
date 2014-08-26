@@ -17,8 +17,8 @@ cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/aut
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/ag-push.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 
 # Add the AeroGear SimplePush module
-mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/org/jboss/aerogear/simplepush/main
-ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/modules/org/jboss/aerogear/simplepush/main/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/org/jboss/aerogear/simplepush/main
+mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/system/layers/base/org/jboss/aerogear/simplepush/main
+ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/modules/system/layers/base/org/jboss/aerogear/simplepush/main/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/system/layers/base/org/jboss/aerogear/simplepush/main
 
 # Generate the token key for SimplePush
 token_key=$(generate_password)
