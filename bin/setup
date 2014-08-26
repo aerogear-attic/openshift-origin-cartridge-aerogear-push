@@ -9,9 +9,6 @@ esac
 mkdir -p ${OPENSHIFT_HOMEDIR}/.m2
 mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/{template,standalone/tmp,standalone/deployments,standalone/configuration,standalone/log,standalone/data}
 
-# This should be removed once OpenShift provides support for JDK 8
-##mkdir -p $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/jvm
-
 # Copy the version specific files up to jbossas directory
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/bin/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
