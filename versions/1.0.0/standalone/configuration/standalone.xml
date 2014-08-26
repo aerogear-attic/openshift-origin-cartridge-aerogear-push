@@ -563,6 +563,9 @@
               -->
             <inet-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
         </interface>
+        <interface name="external">
+            <loopback-address value="${env.OPENSHIFT_GEAR_DNS}"/>
+        </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
