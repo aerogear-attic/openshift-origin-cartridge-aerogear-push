@@ -7,7 +7,7 @@ function update-configuration() {
   then
     export JAVA_HOME=$OPENSHIFT_AEROGEAR_PUSH_JDK7
   else
-    export JAVA_HOME=$OPENSHIFT_AEROGEAR_PUSH_JDK6
+    export JAVA_HOME=$OPENSHIFT_AEROGEAR_PUSH_JDK8
   fi
 
   echo $JAVA_HOME > $OPENSHIFT_AEROGEAR_PUSH_DIR/env/JAVA_HOME
