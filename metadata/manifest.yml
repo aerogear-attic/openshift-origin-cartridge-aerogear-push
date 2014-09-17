@@ -1,12 +1,12 @@
 Name: aerogear-push
 Cartridge-Short-Name: AEROGEAR_PUSH
-Display-Name: AeroGear Push Server 1.0.0
+Display-Name: AeroGear Push Server 1.0.1
 Description: "Provides the AeroGear UnifiedPush Server, a server that allows sending push notifications to different mobile platforms, and the AeroGear SimplePush Server, an implementation of Mozilla's SimplePush Protocol. Runs on JBoss Application Server 7."
-Version: '1.0.0'
+Version: '1.0.1'
 License: "ASL 2.0"
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Vendor: AeroGear
-Cartridge-Version: '0.0.5'
+Cartridge-Version: '0.0.6'
 Cartridge-Vendor: aerogear
 Categories:
   - service
