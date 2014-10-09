@@ -1,6 +1,6 @@
 # OpenShift AeroGear Push Server Cartridge
 
-Provides the _AeroGear UnifiedPush Server_ running on top of JBoss Application Server on OpenShift and embeds the _AeroGear SimplePush Server_ within JBoss Application Server on OpenShift. 
+Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShift and embeds the _AeroGear SimplePush Server_ within WildFly on OpenShift. 
 
 The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unified-push-server) is a server that allows sending push notifications to different (mobile) platforms. The initial version of the server supports [Apple’s APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla’s SimplePush](https://wiki.mozilla.org/WebAPI/SimplePush).
 
