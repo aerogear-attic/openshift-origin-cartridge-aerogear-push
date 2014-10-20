@@ -269,10 +269,16 @@ function build() {
 function deploy() {
   echo "Deploying WildFly"
 
+  # Skip deployments sync when there is no deployment directory
+  if [ ! -d "${OPENSHIFT_REPO_DIR}deployments" ]; then
+    echo "WARNING: The ./deployments directory not found, skipping sync."
+    return
+  fi
+
   # if repo/deployments has any files in it, sync them to $WILDFLY_DEPLOYMENTS_DIR
   # and delete any files in $WILDFLY_DEPLOYMENTS_DIR that don't exist in
   # repo/deployments
-  if [ "$(ls ${OPENSHIFT_REPO_DIR}/deployments)" ]; then
+  if [ "$(ls ${OPENSHIFT_REPO_DIR}deployments)" ]; then
     rsync -r --delete --exclude ".*" ${OPENSHIFT_REPO_DIR}/deployments/ $WILDFLY_DEPLOYMENTS_DIR
   fi
 }
