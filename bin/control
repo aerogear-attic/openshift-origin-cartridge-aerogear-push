@@ -7,6 +7,7 @@ WILDFLY_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/aerogear_push.pid
 WILDFLY_STANDALONE_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone
 WILDFLY_DEPLOYMENTS_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/deployments
 SCANCONFIG=""
+DEPLOYMENT_SCAN_RETRIES=10
 
 source $WILDFLY_BIN_DIR/util
 
@@ -15,7 +16,7 @@ cartridge_type="aerogear-push"
 # Return the deployment-scanner configuration
 function getscanconfig() {
     count=0
-    while [ ${count} -lt 4 ]; do
+    while [ ${count} -lt ${DEPLOYMENT_SCAN_RETRIES} ]; do
       controller="${OPENSHIFT_AEROGEAR_PUSH_IP}:${OPENSHIFT_AEROGEAR_PUSH_MANAGEMENT_HTTP_PORT}"
       scanconfig=`$OPENSHIFT_AEROGEAR_PUSH_DIR/bin/tools/jboss-cli.sh -c --controller=${controller} "/subsystem=deployment-scanner/:read-resource(recursive=true)" 2>&1 || :`
       if [[ $scanconfig =~ '"outcome" => "success"' ]] ; then
