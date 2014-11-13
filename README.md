@@ -10,7 +10,7 @@ The [AeroGear SimplePush Server](https://github.com/aerogear/aerogear-simplepush
 The AeroGear Push Server cartridge defaults to using MySQL. When creating your application, you'll also want to add the MySQL cartridge:
 
 ```
-rhc app create --no-git <APP> https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push
+rhc app create --no-git <APP> https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push-wildfly
 ```
 
 ### Getting started with the AeroGear UnifiedPush Server
