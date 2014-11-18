@@ -19,11 +19,14 @@ rm -rf ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template/pom.xml
 rm -rf ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template/.openshift/markers/java8
 rm -rf ${OPENSHIFT_AEROGEAR_PUSH_DIR}/welcome-content/*
 
-
-# Copy the version specific files up to jbossas directory
-cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration
+# Copy the customized WildFly files from AeroGear current version folder
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/bin/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
-cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/template/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/template
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/welcome-content/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/welcome-content
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration
+
+# Copy the SimplePush modules (required here to make WildFly start correctly)
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/modules/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/modules
 
 # Initialize the JBoss CLI history file
 [ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
