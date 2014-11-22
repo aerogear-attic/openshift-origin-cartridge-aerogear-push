@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-embedded-8.1.0.Final.jar"/>
+        <resource-root path="wildfly-embedded-8.2.0.Final.jar"/>
     </resources>
 
     <dependencies>
@@ -42,5 +42,6 @@
         <module name="org.jboss.modules"/>
         <module name="org.jboss.staxmapper"/>
         <module name="org.jboss.vfs"/>
+        <module name="org.jboss.as.protocol"/>
     </dependencies>
 </module>

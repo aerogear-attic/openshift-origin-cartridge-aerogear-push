@@ -25,12 +25,13 @@
 <module xmlns="urn:jboss:module:1.3" name="org.picketlink.config">
 
     <resources>
-            <resource-root path="picketlink-config-2.5.2.Final.jar"/>
+            <resource-root path="picketlink-config-2.6.0.Final.jar"/>
     </resources>
 
     <dependencies>
         <module name="javax.api" />
         <module name="org.picketlink.common" />
+        <module name="org.jboss.logging"/>
     </dependencies>
 
 </module>

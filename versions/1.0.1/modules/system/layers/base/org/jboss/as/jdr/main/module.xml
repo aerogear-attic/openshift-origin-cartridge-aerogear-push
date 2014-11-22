@@ -31,7 +31,7 @@
     <main-class name="org.jboss.as.jdr.CommandLineMain"/>
 
     <resources>
-        <resource-root path="wildfly-jdr-8.1.0.Final.jar"/>
+        <resource-root path="wildfly-jdr-8.2.0.Final.jar"/>
         <resource-root path="resources"/>
     </resources>
 

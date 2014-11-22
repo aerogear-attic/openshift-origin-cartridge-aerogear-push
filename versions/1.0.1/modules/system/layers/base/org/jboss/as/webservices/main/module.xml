@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-webservices-server-integration-8.1.0.Final.jar"/>
-        <resource-root path="jbossws-cxf-resources-4.2.4.Final-wildfly800.jar"/>
+        <resource-root path="wildfly-webservices-server-integration-8.2.0.Final.jar"/>
+        <resource-root path="jbossws-cxf-resources-4.3.2.Final-wildfly800.jar"/>
     </resources>
 
     <dependencies>

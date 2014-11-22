@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jsoup-1.6.1.jar"/>
+        <resource-root path="jsoup-1.7.1.jar"/>
     </resources>
 
     <dependencies>

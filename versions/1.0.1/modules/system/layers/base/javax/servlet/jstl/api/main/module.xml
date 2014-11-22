@@ -32,6 +32,6 @@
     </dependencies>
 
     <resources>
-        <resource-root path="jboss-jstl-api_1.2_spec-1.1.0.Final.jar"/>
+        <resource-root path="jboss-jstl-api_1.2_spec-1.1.2.Final.jar"/>
     </resources>
 </module>

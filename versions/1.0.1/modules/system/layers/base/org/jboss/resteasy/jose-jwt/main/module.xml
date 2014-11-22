@@ -24,7 +24,7 @@
 
 <module xmlns="urn:jboss:module:1.3" name="org.jboss.resteasy.jose-jwt">
     <resources>
-        <resource-root path="jose-jwt-3.0.8.Final.jar"/>
+        <resource-root path="jose-jwt-3.0.10.Final.jar"/>
     </resources>
 
     <dependencies>

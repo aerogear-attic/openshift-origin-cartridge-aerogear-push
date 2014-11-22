@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="hornetq-ra-2.4.1.Final.jar"/>
+        <resource-root path="hornetq-ra-2.4.5.Final.jar"/>
     </resources>
 
     <dependencies>

@@ -33,9 +33,11 @@
         <module name="javax.servlet.jstl.api"/>
         <module name="org.apache.xerces" services="import"/>
         <module name="org.apache.xalan" services="import"/>
+        <module name="org.jboss.weld.core"/>
+        <module name="org.jboss.weld.spi"/>
     </dependencies>
 
     <resources>
-        <resource-root path="jsf-impl-2.2.6-jbossorg-4.jar"/>
+        <resource-root path="jsf-impl-2.2.8-jbossorg-1.jar"/>
     </resources>
 </module>

@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="resteasy-yaml-provider-3.0.8.Final.jar"/>
-	<resource-root path="resteasy-yaml-provider-3.0.8.Final-jandex.jar"/>
+        <resource-root path="resteasy-yaml-provider-3.0.10.Final.jar"/>
+	<resource-root path="resteasy-yaml-provider-3.0.10.Final-jandex.jar"/>
     </resources>
 
     <dependencies>

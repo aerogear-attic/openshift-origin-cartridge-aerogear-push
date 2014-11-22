@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="javax.el-3.0.0.jar"/>
+        <resource-root path="javax.el-3.0.1-b05.jar"/>
     </resources>
     <dependencies>
             <module name="javax.api"/>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<domain xmlns="urn:jboss:domain:2.1">
+<domain xmlns="urn:jboss:domain:2.2">
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.clustering.jgroups"/>
@@ -288,7 +288,7 @@
                 </core-environment>
                 <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+            <subsystem xmlns="urn:jboss:domain:undertow:1.2">
                 <buffer-cache name="default"/>
                 <server name="default-server">
                     <http-listener name="default" socket-binding="http"/>
@@ -300,6 +300,7 @@
                 </server>
                 <servlet-container name="default">
                     <jsp-config/>
+                    <websockets/>
                 </servlet-container>
                 <handlers>
                     <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
@@ -606,7 +607,7 @@
                 </core-environment>
                 <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+            <subsystem xmlns="urn:jboss:domain:undertow:1.2">
                 <buffer-cache name="default"/>
                 <server name="default-server">
                     <http-listener name="default" socket-binding="http"/>
@@ -619,6 +620,7 @@
                 </server>
                 <servlet-container name="default">
                     <jsp-config/>
+                    <websockets/>
                 </servlet-container>
                 <handlers>
                     <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
@@ -971,7 +973,7 @@
                 </core-environment>
                 <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+            <subsystem xmlns="urn:jboss:domain:undertow:1.2">
                 <buffer-cache name="default"/>
                 <server name="default-server">
                     <http-listener name="default" socket-binding="http"/>
@@ -983,6 +985,7 @@
                 </server>
                 <servlet-container name="default">
                     <jsp-config/>
+                    <websockets/>
                 </servlet-container>
                 <handlers>
                     <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
@@ -1401,7 +1404,7 @@
                 </core-environment>
                 <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
             </subsystem>
-            <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+            <subsystem xmlns="urn:jboss:domain:undertow:1.2">
                 <buffer-cache name="default"/>
                 <server name="default-server">
                     <http-listener name="default" socket-binding="http"/>
@@ -1414,6 +1417,7 @@
                 </server>
                 <servlet-container name="default">
                     <jsp-config/>
+                    <websockets/>
                 </servlet-container>
                 <handlers>
                     <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>

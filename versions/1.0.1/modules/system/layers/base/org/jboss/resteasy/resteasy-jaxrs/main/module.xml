@@ -25,9 +25,9 @@
 <module xmlns="urn:jboss:module:1.3" name="org.jboss.resteasy.resteasy-jaxrs">
 
     <resources>
-        <resource-root path="async-http-servlet-3.0-3.0.8.Final.jar"/>
-        <resource-root path="resteasy-jaxrs-3.0.8.Final.jar"/>
-        <resource-root path="resteasy-client-3.0.8.Final.jar"/>
+        <resource-root path="async-http-servlet-3.0-3.0.10.Final.jar"/>
+        <resource-root path="resteasy-jaxrs-3.0.10.Final.jar"/>
+        <resource-root path="resteasy-client-3.0.10.Final.jar"/>
     </resources>
 
     <dependencies>
@@ -36,6 +36,7 @@
         <module name="javax.activation.api"/>
         <module name="javax.validation.api"/>
         <module name="javax.enterprise.api"/>
+        <module name="javax.xml.bind.api"/>
         <module name="javax.ws.rs.api"/>
         <module name="org.apache.commons.io"/>
         <module name="org.apache.commons.codec" />

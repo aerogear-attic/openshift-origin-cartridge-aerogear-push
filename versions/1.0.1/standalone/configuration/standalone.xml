@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:2.1">
+<server xmlns="urn:jboss:domain:2.2">
     <extensions>
-        <extension module="org.jboss.aerogear.simplepush"/>        
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.clustering.jgroups"/>
         <extension module="org.jboss.as.connector"/>
@@ -81,13 +80,6 @@
         </access-control>
     </management>
     <profile>
-        <subsystem xmlns="urn:org.jboss.aerogear.simplepush:1.0">
-            <server socket-binding="simplepush" password="${env.OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY}" endpoint-tls="true" endpoint-socket-binding="simplepush-notify">
-                <datastore>
-                    <jpa datasource-jndi-name="java:jboss/datasources/SimplePushDS" persistence-unit="SimplePushPU"/>
-                </datastore>
-            </server>
-        </subsystem>
         <subsystem xmlns="urn:jboss:domain:logging:2.0">
             <console-handler name="CONSOLE">
                 <level name="INFO"/>
@@ -154,8 +146,8 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jndi-name="java:jboss/datasources/UnifiedPushDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="UnifiedPushDS" use-ccm="true">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}?useUnicode=true&amp;characterEncoding=UTF-8</connection-url>
+                <datasource jndi-name="java:jboss/datasources/MySQLDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="MySQLDS" use-ccm="true">
+                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
                     <driver>mysql</driver>
                     <security>
                       <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
@@ -166,22 +158,6 @@
                         <background-validation>true</background-validation>
                         <background-validation-millis>60000</background-validation-millis>
                         <!--<validate-on-match>true</validate-on-match>-->
-                    </validation>
-                    <pool>
-                        <flush-strategy>IdleConnections</flush-strategy>
-                    </pool>
-                </datasource>
-
-                <datasource jndi-name="java:jboss/datasources/SimplePushDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="SimplePushDS" use-ccm="true">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
-                    <driver>mysql</driver>
-                    <security>
-                      <user-name>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user-name>
-                      <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
-                    </security>
-                    <validation>
-                        <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
-                        <background-validation>true</background-validation>
                     </validation>
                     <pool>
                         <flush-strategy>IdleConnections</flush-strategy>
@@ -349,14 +325,14 @@
             <stack name="tcp">
                 <transport type="TCP" socket-binding="jgroups-tcp"> 
                     <property name="external_addr">${env.OPENSHIFT_GEAR_DNS}</property>
-                    <property name="external_port">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PROXY_PORT}</property>
-                    <property name="bind_port">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT}</property>
-                    <property name="bind_addr">${env.OPENSHIFT_AEROGEAR_PUSH_IP}</property>
+                    <property name="external_port">${env.OPENSHIFT_WILDFLY_CLUSTER_PROXY_PORT}</property>
+                    <property name="bind_port">${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}</property>
+                    <property name="bind_addr">${env.OPENSHIFT_WILDFLY_IP}</property>
                     <property name="defer_client_bind_addr">true</property>
                 </transport>
                 <protocol type="TCPPING">
                     <property name="timeout">30000</property>
-                    <property name="initial_hosts">${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER}</property>
+                    <property name="initial_hosts">${env.OPENSHIFT_WILDFLY_CLUSTER}</property>
                     <property name="port_range">0</property>
                     <property name="num_initial_members">1</property>
                 </protocol>
@@ -398,6 +374,8 @@
         <subsystem xmlns="urn:jboss:domain:messaging:2.0">
             <hornetq-server>
                 <journal-file-size>102400</journal-file-size>
+                <thread-pool-max-size>${messaging.thread.pool.max.size}</thread-pool-max-size>
+                <scheduled-thread-pool-max-size>${messaging.scheduled.thread.pool.max.size}</scheduled-thread-pool-max-size>
                 <connectors>
                     <http-connector name="http-connector" socket-binding="http">
                         <param key="http-upgrade-endpoint" value="http-acceptor"/>
@@ -515,10 +493,10 @@
             </core-environment>
             <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:undertow:1.1">
+        <subsystem xmlns="urn:jboss:domain:undertow:1.2">
             <buffer-cache name="default"/>
             <server name="default-server">
-                <http-listener name="default" socket-binding="http" proxy-address-forwarding="true" redirect-socket="proxy-https"/>
+                <http-listener name="default" socket-binding="http" proxy-address-forwarding="true"/>
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content"/>
                     <filter-ref name="server-header"/>
@@ -527,6 +505,7 @@
             </server>
             <servlet-container name="default">
                 <jsp-config/>
+                <websockets/>
             </servlet-container>
             <handlers>
                 <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
@@ -550,10 +529,10 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <loopback-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
+            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
         </interface>
         <interface name="public">
-            <loopback-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
+            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
         </interface>
         <!-- TODO - only show this if the jacorb subsystem is added  -->
         <interface name="unsecure">
@@ -561,24 +540,18 @@
               ~  Used for IIOP sockets in the standard configuration.
               ~                  To secure JacORB you need to setup SSL 
               -->
-            <inet-address value="${env.OPENSHIFT_AEROGEAR_PUSH_IP}"/>
-        </interface>
-        <interface name="external">
-            <loopback-address value="${env.OPENSHIFT_GEAR_DNS}"/>
+            <inet-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
         <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9993}"/>
-        <socket-binding name="jgroups-tcp" port="${env.OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT}"/>
+        <socket-binding name="jgroups-tcp" port="${env.OPENSHIFT_WILDFLY_CLUSTER_PORT}"/>
         <socket-binding name="ajp" port="${jboss.ajp.port:8009}"/>
         <socket-binding name="http" port="${jboss.http.port:8080}"/>
         <socket-binding name="https" port="${jboss.https.port:8443}"/>
-        <socket-binding name="proxy-https" port="443"/>
         <socket-binding name="jacorb" interface="unsecure" port="3528"/>
         <socket-binding name="jacorb-ssl" interface="unsecure" port="3529"/>
-        <socket-binding name="simplepush" port="8676"/>
-        <socket-binding name="simplepush-notify" interface="external" port="8443"/>
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>
         <outbound-socket-binding name="mail-smtp">

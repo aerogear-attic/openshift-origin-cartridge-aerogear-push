@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="jbossws-cxf-transports-udp-4.2.4.Final.jar"/>
+        <resource-root path="jbossws-cxf-transports-udp-4.3.2.Final.jar"/>
     </resources>
 
     <dependencies>

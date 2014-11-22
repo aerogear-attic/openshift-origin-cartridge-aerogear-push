@@ -24,8 +24,8 @@
 
 <module xmlns="urn:jboss:module:1.3" name="org.picketbox">
     <resources>
-        <resource-root path="picketbox-4.0.21.Beta1.jar"/>
-        <resource-root path="picketbox-infinispan-4.0.21.Beta1.jar"/>
+        <resource-root path="picketbox-4.0.21.Final.jar"/>
+        <resource-root path="picketbox-infinispan-4.0.21.Final.jar"/>
         <resource-root path="picketbox-commons-1.0.0.final.jar"/>
     </resources>
 

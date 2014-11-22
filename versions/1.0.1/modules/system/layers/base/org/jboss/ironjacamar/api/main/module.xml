@@ -28,9 +28,9 @@
     </properties>
 
     <resources>
-        <resource-root path="ironjacamar-common-api-1.1.5.Final.jar"/>
-        <resource-root path="ironjacamar-common-spi-1.1.5.Final.jar"/>
-        <resource-root path="ironjacamar-core-api-1.1.5.Final.jar"/>
+        <resource-root path="ironjacamar-common-api-1.1.9.Final.jar"/>
+        <resource-root path="ironjacamar-common-spi-1.1.9.Final.jar"/>
+        <resource-root path="ironjacamar-core-api-1.1.9.Final.jar"/>
     </resources>
 
     <dependencies>

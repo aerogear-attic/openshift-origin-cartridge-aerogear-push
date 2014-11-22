@@ -28,8 +28,8 @@
     </properties>
 
     <resources>
-        <resource-root path="resteasy-cdi-3.0.8.Final.jar"/>
-	<resource-root path="resteasy-cdi-3.0.8.Final-jandex.jar"/>
+        <resource-root path="resteasy-cdi-3.0.10.Final.jar"/>
+	<resource-root path="resteasy-cdi-3.0.10.Final-jandex.jar"/>
     </resources>
 
     <dependencies>
@@ -39,5 +39,7 @@
         <module name="javax.ws.rs.api"/>
         <module name="javax.validation.api"/>
         <module name="org.jboss.resteasy.resteasy-jaxrs"/>
+        <module name="org.jboss.weld.core"/>
+        <module name="org.jboss.weld.spi"/>
     </dependencies>
 </module>

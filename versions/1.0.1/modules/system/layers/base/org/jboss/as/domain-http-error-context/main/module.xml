@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-domain-http-error-context-8.1.0.Final.jar"/>
+        <resource-root path="wildfly-domain-http-error-context-8.2.0.Final.jar"/>
     </resources>
 
     <dependencies>

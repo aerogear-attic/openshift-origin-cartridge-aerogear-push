@@ -28,11 +28,13 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-clustering-ejb-infinispan-8.1.0.Final.jar"/>
+        <resource-root path="wildfly-clustering-ejb-infinispan-8.2.0.Final.jar"/>
     </resources>
 
     <dependencies>
+        <module name="javax.transaction.api"/>
         <module name="org.infinispan"/>
+        <module name="org.infinispan.commons"/>
         <module name="org.jboss.as.clustering.common"/>
         <module name="org.jboss.as.clustering.jgroups"/>
         <module name="org.jboss.as.clustering.infinispan"/>

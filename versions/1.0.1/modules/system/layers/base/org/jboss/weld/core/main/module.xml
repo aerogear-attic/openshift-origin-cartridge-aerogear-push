@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <resource-root path="weld-core-impl-2.1.2.Final.jar"/>
+        <resource-root path="weld-core-impl-2.2.6.Final.jar"/>
     </resources>
 
     <dependencies>

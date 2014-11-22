@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <resource-root path="ironjacamar-jdbc-1.1.5.Final.jar"/>
+        <resource-root path="ironjacamar-jdbc-1.1.9.Final.jar"/>
     </resources>
 
     <dependencies>

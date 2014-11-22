@@ -27,7 +27,7 @@
     </properties>
 
     <resources>
-        <resource-root path="wildfly-ee-8.1.0.Final.jar"/>
+        <resource-root path="wildfly-ee-8.2.0.Final.jar"/>
     </resources>
 
     <dependencies>
