@@ -2,6 +2,15 @@
 
 Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShift and embeds the _AeroGear SimplePush Server_ within WildFly on OpenShift. 
 
+|                 | Project Info  |
+| --------------- | ------------- |
+| License:        | Apache License, Version 2.0  |
+| Build:          | Openshift  |
+| Documentation:  | https://aerogear.org/push/  |
+| Issue tracker:  | https://issues.jboss.org/browse/AGPUSH  |
+| Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))  |
+|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))  |
+
 The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unified-push-server) is a server that allows sending push notifications to different (mobile) platforms. The initial version of the server supports [Apple’s APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla’s SimplePush](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 The [AeroGear SimplePush Server](https://github.com/aerogear/aerogear-simplepush-server) is a Java server side implementation of Mozilla's [SimplePush Protocol](https://wiki.mozilla.org/WebAPI/SimplePush/Protocol) that describes a JavaScript API and a protocol which allows backend/application developers to send notification messages to their web applications. 
@@ -76,3 +85,22 @@ Adding marker files to `.openshift/markers` will have the following effects:
 
     java7                Will run JBossAS with Java7 if present. If no marker is present
                          then the baseline Java version will be used (currently Java6)
+
+
+## Documentation
+
+For more details about the current release, please consult [our documentation](https://aerogear.org/push/).
+
+## Development
+
+If you would like to help develop AeroGear you can join our [developer's mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-dev), join #aerogear on Freenode, or shout at us on Twitter @aerogears.
+
+Also takes some time and skim the [contributor guide](http://aerogear.org/docs/guides/Contributing/)
+
+## Questions?
+
+Join our [user mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-users) for any questions or help! We really hope you enjoy app development with AeroGear!
+
+## Found a bug?
+
+If you found a bug please create a ticket for us on [Jira](https://issues.jboss.org/browse/AGPUSH) with some steps to reproduce it.
