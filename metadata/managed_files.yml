@@ -24,6 +24,13 @@ locked_files:
 - usr/modules/org/jboss/aerogear/simplepush/
 - usr/modules/org/jboss/aerogear/simplepush/main/
 - usr/modules/org/jboss/aerogear/simplepush/main/*
+- usr/lib/
+- usr/lib/migrator/
+- usr/lib/migrator/*
+- usr/lib/migrator/bin/
+- usr/lib/migrator/bin/*
+- usr/lib/migrator/lib/
+- usr/lib/migrator/lib/*
 - versions/1.0.3/modules/system/layers/base/org/
 - versions/1.0.3/modules/system/layers/base/org/jboss/
 - versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/

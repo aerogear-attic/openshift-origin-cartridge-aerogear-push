@@ -296,7 +296,7 @@ function start() {
   if isrunning; then
       echo "Application is already running"
   else
-    ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/migrator/bin/ups-migrator --url=jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME} --driver=com.mysql.jdbc.Driver --username=${OPENSHIFT_MYSQL_DB_USERNAME} --password=${OPENSHIFT_MYSQL_DB_PASSWORD} --changeLogFile=liquibase/master.xml update
+    ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/lib/migrator/bin/ups-migrator --url=jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME} --driver=com.mysql.jdbc.Driver --username=${OPENSHIFT_MYSQL_DB_USERNAME} --password=${OPENSHIFT_MYSQL_DB_PASSWORD} --changeLogFile=liquibase/master.xml update
     ${WILDFLY_BIN_DIR}/standalone.sh -b $OPENSHIFT_AEROGEAR_PUSH_IP -bmanagement=$OPENSHIFT_AEROGEAR_PUSH_IP > $OPENSHIFT_AEROGEAR_PUSH_DIR/logs/server.log 2>&1 &
     PROCESS_ID=$!
     echo "$PROCESS_ID" > ${WILDFLY_PID_FILE}
