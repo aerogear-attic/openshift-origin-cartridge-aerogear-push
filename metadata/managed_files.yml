@@ -30,5 +30,13 @@ locked_files:
 - versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/
 - versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/main/
 - versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/main/*
+- versions/1.0.3/usr/
+- versions/1.0.3/usr/lib/
+- versions/1.0.3/usr/lib/migrator/
+- versions/1.0.3/usr/lib/migrator/*
+- versions/1.0.3/usr/lib/migrator/bin/
+- versions/1.0.3/usr/lib/migrator/bin/*
+- versions/1.0.3/usr/lib/migrator/lib/
+- versions/1.0.3/usr/lib/migrator/lib/*
 processed_templates:
 - '**/*.erb'
