@@ -24,11 +24,11 @@ locked_files:
 - usr/modules/org/jboss/aerogear/simplepush/
 - usr/modules/org/jboss/aerogear/simplepush/main/
 - usr/modules/org/jboss/aerogear/simplepush/main/*
-- versions/1.0.1/modules/system/layers/base/org/
-- versions/1.0.1/modules/system/layers/base/org/jboss/
-- versions/1.0.1/modules/system/layers/base/org/jboss/aerogear/
-- versions/1.0.1/modules/system/layers/base/org/jboss/aerogear/simplepush/
-- versions/1.0.1/modules/system/layers/base/org/jboss/aerogear/simplepush/main/
-- versions/1.0.1/modules/system/layers/base/org/jboss/aerogear/simplepush/main/*
+- versions/1.0.3/modules/system/layers/base/org/
+- versions/1.0.3/modules/system/layers/base/org/jboss/
+- versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/
+- versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/
+- versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/main/
+- versions/1.0.3/modules/system/layers/base/org/jboss/aerogear/simplepush/main/*
 processed_templates:
 - '**/*.erb'
