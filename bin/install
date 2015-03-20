@@ -11,10 +11,6 @@ echo "$version" > "$OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_VERS
 
 ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/log ${OPENSHIFT_AEROGEAR_PUSH_DIR}/logs
 
-## Install the migrator
-mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}standalone/migrator
-cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/usr/lib/migrator/* $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/migrator
-
 # Install the UnifiedPush Server WARs (auth and core)
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/auth-server.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/ag-push.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments

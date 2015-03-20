@@ -25,6 +25,10 @@ cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/template/* ${OPENSHIFT_A
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/welcome-content/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/welcome-content
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/configuration
 
+# Install the migrator
+mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/lib/migrator
+cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/usr/lib/migrator/* $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/migrator
+
 # Copy the SimplePush modules (required here to make WildFly start correctly)
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/modules/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/modules
 
