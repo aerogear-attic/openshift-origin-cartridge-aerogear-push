@@ -1,6 +1,6 @@
 # OpenShift AeroGear Push Server Cartridge
 
-Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShift and embeds the _AeroGear SimplePush Server_ within WildFly on OpenShift. 
+Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShift. 
 
 |                 | Project Info  |
 | --------------- | ------------- |
@@ -12,8 +12,6 @@ Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShif
 |                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))  |
 
 The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unified-push-server) is a server that allows sending push notifications to different (mobile) platforms. The initial version of the server supports [Apple’s APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla’s SimplePush](https://wiki.mozilla.org/WebAPI/SimplePush).
-
-The [AeroGear SimplePush Server](https://github.com/aerogear/aerogear-simplepush-server) is a Java server side implementation of Mozilla's [SimplePush Protocol](https://wiki.mozilla.org/WebAPI/SimplePush/Protocol) that describes a JavaScript API and a protocol which allows backend/application developers to send notification messages to their web applications. 
 
 ### Installation
 The AeroGear Push Server cartridge defaults to using MySQL. When creating your application, you'll also want to add the MySQL cartridge:
@@ -32,21 +30,6 @@ Once the server is running access it via ```https://{APP}-{NAMESPACE}.rhcloud.co
 
 Temporarily, there is an "admin:123" user.  On _first_ login,  you will need to change the password.
 
-### Getting started with the AeroGear SimplePush Server
-
-#### Client connections
-
-For _secured_ connections, client applications should connect to the _AeroGear SimplePush Server_ via ```https://{APP}-{NAMESPACE}.rhcloud.com:8443/simplepush```.
-
-For _unsecured_ connections, client applications can connect to the _AeroGear SimplePush Server_ via ```http://{APP}-{NAMESPACE}.rhcloud.com:8000/simplepush```.
-
-**NOTE:** It is recommended that you always use _secured_ connections.
-
-#### Known issue with an idled OpenShift application and WebSocket requests
-
-Currently, if your AeroGear Push Server application is [idled by OpenShift](https://www.openshift.com/faq/what-happens-if-my-application-is-not-used-for-a-long-time), attempts to establish a WebSocket connection to the _AeroGear SimplePush Server_ will not wake up your idled application. This is a known issue (see [AEROGEAR-1296](https://issues.jboss.org/browse/AEROGEAR-1296)) and will be fixed in a future release of OpenShift Online. Note that requests to your application on port 80 (i.e., ```http://{APP}-{NAMESPACE}.rhcloud.com```) will wake up your idled application.
-
-
 ### Template Repository Layout
 
     .openshift/        Location for OpenShift specific files
@@ -64,11 +47,6 @@ of use:
 
     OPENSHIFT_AEROGEAR_PUSH_IP                         The IP address used to bind JBossAS
     OPENSHIFT_AEROGEAR_PUSH_HTTP_PORT                  The JBossAS listening port
-    OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY                  The token key for the SimplePush Server
-    OPENSHIFT_AEROGEAR_PUSH_CLUSTER_PORT               
-    OPENSHIFT_AEROGEAR_PUSH_MESSAGING_PORT             
-    OPENSHIFT_AEROGEAR_PUSH_MESSAGING_THROUGHPUT_PORT  
-    OPENSHIFT_AEROGEAR_PUSH_REMOTING_PORT              
     JAVA_OPTS_EXT                                      Appended to JAVA_OPTS prior to invoking the Java VM
 
 For more information about environment variables, consult the

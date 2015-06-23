@@ -15,14 +15,6 @@ ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/log ${OPENSHIFT_AEROGEAR_PUSH_DI
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/auth-server.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 cp ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/standalone/deployments/ag-push.war $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/deployments
 
-# Add the AeroGear SimplePush module
-mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/org/jboss/aerogear/simplepush/main
-ln -s ${OPENSHIFT_AEROGEAR_PUSH_DIR}/versions/${version}/modules/system/layers/base/org/jboss/aerogear/simplepush/main/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/modules/org/jboss/aerogear/simplepush/main
-
-# Generate the token key for SimplePush
-token_key=$(generate_password)
-echo "$token_key" > ${OPENSHIFT_AEROGEAR_PUSH_DIR}/env/OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY
-
 client_result ""
 client_result "Aerogear Push Server added.  Please make note of these default credentials:"
 client_result ""

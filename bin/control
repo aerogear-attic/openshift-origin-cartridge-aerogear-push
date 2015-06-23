@@ -4,7 +4,6 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 WILDFLY_BIN_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/bin
 WILDFLY_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/aerogear_push.pid
-WILDFLY_STANDALONE_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone
 WILDFLY_DEPLOYMENTS_DIR=${OPENSHIFT_AEROGEAR_PUSH_DIR}/standalone/deployments
 SCANCONFIG=""
 DEPLOYMENT_SCAN_RETRIES=4
@@ -377,41 +376,6 @@ function threaddump() {
     fi
 }
 
-function pre_snapshot {
-  start
-  echo "$OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY" > $OPENSHIFT_DATA_DIR/aerogear_push_token_key
-  cp $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/configuration/standalone.xml $OPENSHIFT_DATA_DIR/standalone.snapshot.xml
-  stop
-}
-
-function post_snapshot {
-  true
-}
-
-function pre_restore {
-  cleanup_dump
-}
-
-function post_restore {
-  if [ -s $OPENSHIFT_DATA_DIR/aerogear_push_token_key ]; then
-    TOKEN_KEY=$(< $OPENSHIFT_DATA_DIR/aerogear_push_token_key)
-    echo $TOKEN_KEY > $OPENSHIFT_AEROGEAR_PUSH_DIR/env/OPENSHIFT_AEROGEAR_PUSH_TOKEN_KEY
-    sed -i "s/<server socket-binding=\"simplepush\"\(.*\) password=\"[^\"]\+\"/<server socket-binding=\"simplepush\"\1 password=\"$TOKEN_KEY\"/" $WILDFLY_STANDALONE_DIR/configuration/standalone.xml > /dev/null 2>&1
-  fi
-
-  if [ -s $OPENSHIFT_DATA_DIR/standalone.snapshot.xml ]; then
-    cp $OPENSHIFT_DATA_DIR/standalone.snapshot.xml $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/configuration/standalone_xml_history/snapshot/standalone.snapshot.xml
-  fi
-
-  cleanup_dump
-}
-
-function cleanup_dump {
-  rm -f $OPENSHIFT_DATA_DIR/aerogear_push_token_key
-  rm -f $OPENSHIFT_DATA_DIR/standalone.snapshot.xml
-}
-
-
 case "$1" in
   build)           build ;;
   deploy)          deploy ;;
@@ -423,10 +387,6 @@ case "$1" in
   tidy)            tidy ;;
   threaddump)      threaddump ;;
   update-configuration) update-configuration;;
-  pre-snapshot)    pre_snapshot ;;
-  post-snapshot)   post_snapshot ;;
-  pre-restore)     pre_restore ;;
-  post-restore)    post_restore ;;  
   *)               exit 0
 esac
 
