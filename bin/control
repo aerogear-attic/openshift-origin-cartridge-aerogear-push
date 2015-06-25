@@ -376,6 +376,33 @@ function threaddump() {
     fi
 }
 
+function pre_snapshot {
+  start
+  cp $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/configuration/standalone.xml $OPENSHIFT_DATA_DIR/standalone.snapshot.xml
+  stop
+}
+
+function post_snapshot {
+  true
+}
+
+function pre_restore {
+  cleanup_dump
+}
+
+function post_restore {
+  if [ -s $OPENSHIFT_DATA_DIR/standalone.snapshot.xml ]; then
+    cp $OPENSHIFT_DATA_DIR/standalone.snapshot.xml $OPENSHIFT_AEROGEAR_PUSH_DIR/standalone/configuration/standalone_xml_history/snapshot/standalone.snapshot.xml
+  fi
+
+  cleanup_dump
+}
+
+function cleanup_dump {
+  rm -f $OPENSHIFT_DATA_DIR/standalone.snapshot.xml
+}
+
+
 case "$1" in
   build)           build ;;
   deploy)          deploy ;;
@@ -387,6 +414,10 @@ case "$1" in
   tidy)            tidy ;;
   threaddump)      threaddump ;;
   update-configuration) update-configuration;;
+  pre-snapshot)    pre_snapshot ;;
+  post-snapshot)   post_snapshot ;;
+  pre-restore)     pre_restore ;;
+  post-restore)    post_restore ;;
   *)               exit 0
 esac
 
