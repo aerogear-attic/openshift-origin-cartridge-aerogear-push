@@ -29,9 +29,6 @@ cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/standalone/configuration
 mkdir -p ${OPENSHIFT_AEROGEAR_PUSH_DIR}/usr/lib/migrator
 cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/usr/lib/migrator/* $OPENSHIFT_AEROGEAR_PUSH_DIR/usr/lib/migrator
 
-# Copy the SimplePush modules (required here to make WildFly start correctly)
-cp -r ${OPENSHIFT_AEROGEAR_PUSH_DIR}versions/${version}/modules/* ${OPENSHIFT_AEROGEAR_PUSH_DIR}/modules
-
 # Initialize the JBoss CLI history file
 [ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
 
