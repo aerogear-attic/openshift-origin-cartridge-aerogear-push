@@ -26,13 +26,13 @@ locked_files:
 - usr/lib/migrator/bin/*
 - usr/lib/migrator/lib/
 - usr/lib/migrator/lib/*
-- versions/1.0.3/usr/
-- versions/1.0.3/usr/lib/
-- versions/1.0.3/usr/lib/migrator/
-- versions/1.0.3/usr/lib/migrator/*
-- versions/1.0.3/usr/lib/migrator/bin/
-- versions/1.0.3/usr/lib/migrator/bin/*
-- versions/1.0.3/usr/lib/migrator/lib/
-- versions/1.0.3/usr/lib/migrator/lib/*
+- versions/1.1.0/usr/
+- versions/1.1.0/usr/lib/
+- versions/1.1.0/usr/lib/migrator/
+- versions/1.1.0/usr/lib/migrator/*
+- versions/1.1.0/usr/lib/migrator/bin/
+- versions/1.1.0/usr/lib/migrator/bin/*
+- versions/1.1.0/usr/lib/migrator/lib/
+- versions/1.1.0/usr/lib/migrator/lib/*
 processed_templates:
 - '**/*.erb'
