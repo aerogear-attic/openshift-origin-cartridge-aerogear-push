@@ -14,7 +14,7 @@ Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShif
 The [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unified-push-server) is a server that allows sending push notifications to different (mobile) platforms. The initial version of the server supports [Apple’s APNs](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging](http://developer.android.com/google/gcm/index.html) and [Mozilla’s SimplePush](https://wiki.mozilla.org/WebAPI/SimplePush).
 
 ### Installation
-The AeroGear Push Server cartridge defaults to using MySQL. When creating your application, you'll also want to add the MySQL cartridge:
+The AeroGear Push Server cartridge requires a _medium_ sized gear and defaults to using MySQL for its database. When creating your application, you'll also want to add the MySQL cartridge:
 
 ```
 rhc create-app --gear-size medium --no-git <APP> https://cartreflect-claytondev.rhcloud.com/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push
