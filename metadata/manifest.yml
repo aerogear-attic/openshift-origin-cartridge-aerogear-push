@@ -1,12 +1,12 @@
 Name: aerogear-push
 Cartridge-Short-Name: AEROGEAR_PUSH
-Display-Name: AeroGear UnifiedPush Server 1.1.2.Final and WildFly
+Display-Name: AeroGear UnifiedPush Server 1.1.3.Final and WildFly
 Description: "Provides the AeroGear UnifiedPush Server, a server that allows sending push notifications to different mobile platforms."
-Version: '1.1.2'
+Version: '1.1.3'
 License: "ASL 2.0"
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Vendor: AeroGear
-Cartridge-Version: '1.0.8'
+Cartridge-Version: '1.0.9'
 Cartridge-Vendor: aerogear
 Categories:
   - service
