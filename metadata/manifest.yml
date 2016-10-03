@@ -8,6 +8,7 @@ License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Vendor: AeroGear
 Cartridge-Version: '1.0.9'
 Cartridge-Vendor: aerogear
+Source-Url: https://github.com/aerogear/openshift-origin-cartridge-aerogear-push/archive/master.zip
 Categories:
   - service
   - web_framework
