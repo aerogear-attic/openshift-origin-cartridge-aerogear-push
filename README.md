@@ -1,5 +1,7 @@
 # OpenShift AeroGear Push Server Cartridge
 
+**DEPRECATED:** This is based on OpenShift 2, and is no longer supported. Users are asked to check out the AeroGear community template for Openshift 3: https://github.com/aerogear/aerogear-unifiedpush-server/tree/master/openshift  
+
 Provides the _AeroGear UnifiedPush Server_ running on top of WildFly on OpenShift. 
 
 |                 | Project Info  |
